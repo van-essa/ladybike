@@ -1,1 +1,1 @@
-web: gunicorn ladybike.wsqi
+web: gunicorn ladybike.wsgi
