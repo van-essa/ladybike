@@ -1,0 +1,75 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="masthead">
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-md-6 masthead-text">
+                <!-- Article title goes in these h1 tags -->
+                <h1 class="article-title">
+                </h1>
+                <!-- Article author goes before the | the article's created date goes after -->
+                <p class="article-subtitle"> | </p>
+            </div>
+            <div class="d-none d-md-block col-md-6 masthead-image">
+                <!-- The featured image URL goes in the src attribute -->
+                {% if "placeholder" in post.featured_image.url %}
+                <img src="https://stagescycling.com/media/.renditions/wysiwyg/stages-cycling/landing-pages/home/2021/commercial_indoor_cycles-smiling-700px_by_500px.jpg" width="100%">
+                {% else %}
+                <img src="" width="100%">
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col card mb-4  mt-3 left  top">
+            <div class="card-body">
+                <!-- The article's content goes inside the card-text. -->
+                <!-- Use the | safe filter inside the template tags -->
+                <p class="card-text "></p>
+                <div class="row">
+
+                    <div class="col-1">
+                        <strong>
+                            <!-- If user loggedin they can like/unlike the article -->
+                            {% if.user.is_authenticated %}
+                            <form class="d-inline" action="{% url 'post_like' post.slug %}" method="POST">
+                                {% csr_token %}
+                                {% if liked %}
+
+                                <button type="submit" name="article_id" value="{{post.slug}}" class="btn-like" >
+                                    <i class="fas fa-heart"></i>
+                                </button>
+
+                                {% else %}
+
+                                <button type="submit" name="article_id" value="{{post.slug}}" class="btn-like" >
+                                    <i class="far fa-heart"></i>
+                                </button>
+
+                                {% endif %}
+                            </form>
+
+                            {% else %}
+                            <span class="text-secondary"><i class="far fa-heart"></i></span>
+                            {% endif %}
+                            <!-- The number of likes goes before the closing strong tag -->
+                            <span class="text-secondary">{{ post.number_of_likes }}</span>
+                        </strong>
+                
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <hr>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
