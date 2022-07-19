@@ -2,6 +2,157 @@
 
 {% block content %}
 
+{% load static %}
 
+<header class="bg-gradient-dark">
+    <div class="page-header min-vh-75">
+        <img  class="bg-img" src="{% static 'images/header.jpg' %}" alt="biking_class">
+      <span class="mask bg-gradient-dark opacity-6"></span>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center mx-auto my-auto">
+            <h1 class="text-white">Welcome to Ladybike</h1>
+            <p class="lead mb-4 text-white opacity-8">We’re passionate female cycling professionals who wants to make cycling tarining a fun experince for othetr feamles!
+                Book a session today and we'll make sure you have a great sweaty experince! </p>
+            <button type="submit" class="btn bg-white text-dark">Book Now!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="card card-body shadow-xl mx-3 mx-md-4 mt-n6">
+    <!-- Section with four info areas left & one card right with image and waves -->
+    <section class="py-7">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-lg-6">
+              <div class="row justify-content-start">
+                <div class="col-md-6">
+                  <div class="info">
+                    <i class="material-icons text-3xl text-gradient text-info mb-3">public</i>
+                    <h5>Fully integrated</h5>
+                    <p>We get insulted by others, lose trust for those We get back freezes</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="info">
+                    <i class="fa-solid fa-person-biking text-3xl text-gradient text-info mb-3">Bike></i>
+                    <h5>Three Classes</h5>
+                    <p>We offer three differnet biking classes. Each bike session lasts one hour.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-start mt-4">
+                <div class="col-md-6">
+                  <div class="info">
+                    <i class="fa-solid fa-hands-holding-heart text-3xl text-gradient text-info mb-3">Holding heart</i>
+                    <h5>We Are Together</h5>
+                    <p>Everyone has her own level, and that is totally fine! You are welcome to join all classes. We are doing this together!</p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="info">
+                    <i class="fa-solid fa-user-hair-long text-3xl text-gradient text-info mb-3">Woman</i>
+                    <h5>Only For Women</h5>
+                    <p>Our classes are only for women. We want connnect women interested in cycling. What better meeting them is a bike session?</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 ms-auto mt-lg-0 mt-4">
+              <div class="card">
+                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+                  <a class="d-block blur-shadow-image">
+                    <img src="https://live-production.wcms.abc-cdn.net.au/c1f744c896b00416989a7b3530350d9a?impolicy=wcms_crop_resize&cropH=577&cropW=866&xPos=2&yPos=37&width=862&height=575" alt="img-girls-biking" class="img-fluid border-radius-lg">
+                  </a>
+                </div>
+                <div class="card-body text-center">
+                  <h5 class="font-weight-normal">
+                    Articles
+                  </h5>
+                  <p class="mb-0">
+                    Our articles aim to provide you with great content to isnpire you follow a healthy lifestyle.
+                  </p>
+                  <a class="btn bg-gradient-info btn-sm mb-0 mt-3" href="articles.html"><button type="button" >Find out more</button>
+                </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+<!-- END Section with four info areas left & one card right with image and waves -->
+    <!-- -------- START Feature with pattern background  -------- -->
+    <section class="pb-5 position-relative bg-gradient-dark mx-n3">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 text-start mb-5 mt-5">
+              <h3 class="text-white z-index-1 position-relative">Meat The Team</h3>
+              <p class="text-white opacity-8 mb-0">“Embrace your sweat. It is your essence and your emancipation.” — Kristin Armstrong, American cyclist</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-12">
+              <div class="card card-profile mt-4">
+                <div class="row">
+                  <div class="col-lg-4 col-md-6 col-12 mt-n5">
+                      <div class="p-3 pe-md-0">
+                        <img class="w-100 border-radius-md shadow-lg" src="{% static 'images/emma.jpg' %}" alt="image">
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-lg-8 col-md-6 col-12 my-auto">
+                    <div class="card-body ps-lg-0">
+                      <h5 class="mb-0">Emma Roberts</h5>
+                      <h6 class="text-info">Proffesional Cyclist</h6>
+                      <p class="mb-0">I love biking! I would love to share my passion with you! Joing me on the Spinning and Ladybike classes.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-12">
+              <div class="card card-profile mt-lg-4 mt-5">
+                <div class="row">
+                  <div class="col-lg-4 col-md-6 col-12 mt-n5">
+                    <a href="javascript:;">
+                      <div class="p-3 pe-md-0">
+                        <img class="w-100 border-radius-md shadow-lg" src="{% static 'images/vaness.png' %}" alt="image">
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-lg-8 col-md-6 col-12 my-auto">
+                    <div class="card-body ps-lg-0">
+                      <h5 class="mb-0">Vanessa Andersson</h5>
+                      <h6 class="text-info">Thriathete</h6>
+                      <p class="mb-0">Let's build strong legs! Join me at Ride that hill session!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </section>
+  </div>
 
 {%endblock%}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<!--  listen for scroll event -->
+<script>
+    if (document.getElementsByClassName('page-header')) {
+      window.onscroll = debounce(function() {
+        var scrollPosition = window.pageYOffset;
+        var bgParallax = document.querySelector('.page-header');
+        var oVal = (window.scrollY / 3);
+        bgParallax.style.transform = 'translate3d(0,' + oVal + 'px,0)';
+      }, 6);
+    }
+  </script>
+
+{% endblock javascripts %}

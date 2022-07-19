@@ -2,6 +2,75 @@
 
 {% block content %}
 
+{% load static %}
+
+<header class="bg-gradient-dark">
+    <div class="page-header min-vh-75">
+        <img  class="bg-img" src="{% static 'images/header.jpg' %}" alt="biking_class">
+      <span class="mask bg-gradient-dark opacity-6"></span>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 text-center mx-auto my-auto">
+            <h1 class="text-white">Our Classes</h1>
+            <p class="lead mb-4 text-white opacity-8">Learn more about our classes and book the one that suits you the best!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="card card-body shadow-xl mx-3 mx-md-4 mt-n6">
+
+                <!-- Content Row-->
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-md-4 mb-5">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <img  class="bg-img" src="{% static 'images/spinning_class.jpg' %}" alt="spinning_class">
+                                <h2 class="card-title">Spinning</h2>
+                                <h6>Last: 60 minutes</h6>
+                                <h6>Calories burnt: 400-500</h6>
+                                <p class="card-text">It relies on a combination of fast-paced cycling and strategic lighter 
+                                    rest intervals to get you recovered for the next burst.
+                                </p>
+                            </div>
+                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">Book</a></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <img  class="bg-img" src="{% static 'images/ride_that_hill_class.png' %}" alt="spinning_class">
+                                <h2 class="card-title">Ride That Hill</h2>
+                                <h6>Last: 60 minutes</h6>
+                                <h6>Calories burnt: 500-600</h6>
+                                <p class="card-text">It is an indoor cycling climbing drill where you simulate a hill that creeps 
+                                    in grade into a very steep mountain like grade by the end. A great class to increase your strength and power.
+                                </p>
+                            </div>
+                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">Book</a></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-5">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <img  class="bg-img" src="{% static 'images/ladybike_class.jpg' %}" alt="spinning_class">
+                                <h2 class="card-title">Ladybike</h2>
+                                <h6>Last: 60 minutes</h6>
+                                <h6>Calories burnt: 600-700</h6>
+                                <p class="card-text">Is an intense combo class that will push your body to the limit. 
+                                    It combines intervals of cardio with strength conditioning, moving quickly between 
+                                    the bike and equipment on the ground. Expect to work with dumbbells, bands, gliders, and your own body-weight.</p>
+                            </div>
+                            <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">Book</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+  </div>
+
 
 
 {%endblock%}
