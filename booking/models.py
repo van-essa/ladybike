@@ -33,14 +33,18 @@ class Session(models.Model):
 
     def __str__(self):
         return str(self.class_name)
+
+
+    @property
+    """ Counting the amount of classes available that got booked """
+    def classes_total(self):
+        return self.class_name.filter(classstatus='Available').count()
     
     @property
-    def bookings_total(self):
-        return self.bookings_set.filter(bookingstatus='y').count()
+    """ Removing the booked seats with the total availbel seats """
+    def classes_left(self):
+        return self.classes_total - self.seats
     
-    @property
-    def bookings_left(self):
-        return self.bookings_total - self.seats
 
 
 class Bookings(models.Model):
@@ -52,4 +56,6 @@ class Bookings(models.Model):
     session = models.ForeignKey('Session', on_delete=models.CASCADE)
     sessiondate = models.DateField()
     bookingstatus = models.CharField(max_length=10, default='p', choices=OPTION_STATUS)
-
+    
+    def __str__(self):
+        return str(self.booking_id)
