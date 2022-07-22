@@ -4,6 +4,17 @@ from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
+# Create your models here.
+class Customer(models.Model):
+    """ Customer information model """
+    customer_id = models.AutoField(primary_key=True)
+    full_name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=254, default="")
+
+    def __str__(self):
+        # return the full name as this is easier for the admin to read
+        return self.full_name
+
 class ClassName(models.Model):
     """ Class Type Model """
     
@@ -16,46 +27,33 @@ class ClassName(models.Model):
     def __str__(self):
         return str(self.classes)
 
-class Session(models.Model):
-    """ Session Class Model """
+class Booking(models.Model):
+    """ Booking Class Model """
 
     STATUS_CHOICES = (('Fully_Booked', 'Fully_Booked'),
                       ('Availble', 'Availble'))
+    
+    OPTION_STATUS = (('y','Yes'), ('n', 'No'), ('p', 'Pending'))
 
     class Meta:
-        verbose_name_plural = 'Sessions'
+        verbose_name_plural = 'Booking'
 
     class_name = models.ForeignKey('ClassName', on_delete=models.CASCADE, default=True)
     status = models.CharField(max_length=15, choices=STATUS_CHOICES, default='Available')
     seats = models.IntegerField(default=True, null=False)
     requested_date = models.DateField()
     requested_time = models.TimeField()
+    bookingtatus = models.CharField(max_length=10, default='p', choices=OPTION_STATUS)
 
     def __str__(self):
         return str(self.class_name)
 
-
-    @property
-    """ Counting the amount of classes available that got booked """
-    def classes_total(self):
+""" Counting the amount of classes available that got booked """
+@property
+def classes_total(self):
         return self.class_name.filter(classstatus='Available').count()
-    
-    @property
-    """ Removing the booked seats with the total availbel seats """
-    def classes_left(self):
+
+""" Removing the booked seats with the total availbel seats """    
+@property
+def classes_left(self):
         return self.classes_total - self.seats
-    
-
-
-class Bookings(models.Model):
-    """ Booking Model """
-
-    OPTION_STATUS = (('y','Yes'), ('n', 'No'), ('p', 'Pending'))
-
-    booking_id = models.AutoField(primary_key=True)
-    session = models.ForeignKey('Session', on_delete=models.CASCADE)
-    sessiondate = models.DateField()
-    bookingstatus = models.CharField(max_length=10, default='p', choices=OPTION_STATUS)
-    
-    def __str__(self):
-        return str(self.booking_id)
