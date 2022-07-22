@@ -38,6 +38,9 @@ class Booking(models.Model):
     class Meta:
         verbose_name_plural = 'Booking'
 
+    booking_id = models.AutoField(primary_key=True)
+    customer = models.ForeignKey(
+        Customer, on_delete=models.CASCADE, related_name="customer", null=True)
     class_name = models.ForeignKey('ClassName', on_delete=models.CASCADE, default=True)
     status = models.CharField(max_length=15, choices=STATUS_CHOICES, default='Available')
     seats = models.IntegerField(default=True, null=False)
