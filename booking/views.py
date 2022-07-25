@@ -11,6 +11,9 @@ import datetime
 
 # Create your views here.
 
+def classes_urls(request):
+    return render(request, "classes.html")
+
 def booking_view(request):
     """  Order the data by the date closest to the current date only for dates in the future, not for dates that have passed """
 
