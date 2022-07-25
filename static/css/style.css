@@ -43,7 +43,7 @@ body {
     bottom: 5%;
     min-width: 30%;
     left: -2px;
-    background-color: #23BBBB;
+    background-color: #d606ba;
 }
 
 .author {
@@ -93,7 +93,7 @@ body {
 
 .article-link:hover,
 .page-link {
-    color: #E84610;
+    color: #d606ba;
 }
 
 .article-title {
@@ -107,18 +107,18 @@ body {
 }
 
 .btn-signup {
-    background-color: #23BBBB;
+    background-color: #d606ba;
     color: #fff;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
     background-color: #fff;
-    color: #23BBBB;
+    color: #d606ba;
 }
 
 .link {
-    color: #23BBBB;
+    color: #d606ba;
     text-decoration: none;
 }
 
@@ -128,17 +128,76 @@ body {
     text-decoration: underline;
 }
 
+
+/* Like Button Articles */
 .btn-like {
-    color: #E84610;
+    color: #d606ba;
     border: none;
     background: transparent;
 }
 
 .btn-like:hover,
 .btn-like:active {
-    color: #E84610;
+    color: #d606ba;
     background: transparent;
     border: none;
 }
-Footer
-© 2022 GitHub, Inc.
+
+
+
+/* Manage Reservations page */
+
+/* Status colours */
+.confirmed {
+    background-color: #d606ba;
+    color: white;
+    padding: 2px;
+}
+
+.pending {
+    background-color: rgb(100, 149, 250);
+    color: white;
+    padding: 2px;
+}
+
+.rejected {
+    background-color: rgb(167, 8, 3);
+    color: white;
+    padding: 2px;
+}
+
+.expired {
+    background-color: grey;
+    color: white;
+    padding: 2px;
+}
+
+.booking-list,
+.booking-item {
+    list-style: none;
+    padding-left: 0;
+}
+
+
+/* Crispy form inputs */
+
+input#id_name.textinput.textInput,
+input#id_email.emailinput,
+input#id_full_name.textinput.textInput,
+select#id_class_name,
+select#id_requested_time,
+input#id_requested_date {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Date picker */
+
+.ui-widget {
+    font-family: 'Lora', serif;
+}
+
+.ui-widget-header {
+    background: #d606ba;
+    color: #Effbed;
+}

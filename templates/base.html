@@ -45,6 +45,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{% url 'classes' %}">Classes</a>
                     </li>
+                    <ul class="navbar-nav">
                     {% if user.is_authenticated %}
                     <!-- Display manage bookings and logout option if user is logged in -->
                     <li class="nav-item">
@@ -68,9 +69,6 @@
                     </li>
                     {% endif %}
                 </ul>
-                <span class="navbar-text text-muted">
-                    Ladybike - Biking Classes
-                </span>
             </div>
         </div>
     </nav>
@@ -98,9 +96,9 @@
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 dark-bg">
-        <p class="m-0 text-center text-white">Made by Code Instituters</p>
-        <p class="m-0 text-center text-white">Follow us: <i class="fab fa-facebook-square ms-3"></i>
-            <i class="fa-brands fa-github"><a href="https://github.com/van-essa" target="_blank" title="Eric"></a></i>
+        <p class="m-0 text-center text-white">Made by Vanessa Andersson</p>
+        <p class="m-0 text-center text-white">Follow me:
+            <i class="fa-brands fa-github"><a href="https://github.com/van-essa" target="_blank" title="Vanessa"></a></i>
             <i class="fab fa-linkedin-in"><a href="https://www.linkedin.com/in/vanessaannamariaandersson/" target="_blank" title="My_LinkedIn"></a></i>
     </footer>
 

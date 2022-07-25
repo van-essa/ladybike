@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4 text-center mb-3">
+            <h2 class="text-center mt-2 mb-3">Cancel your booking</h2>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-6">
+            <form method="POST" class="text-center mb-5" id="delete-form">
+                
+                <!-- Display the booking -->
+                <ul class="booking"></ul>
+                {% csrf_token %}
+                <h5>Booking ID: {{ booking.booking_id }} </h5>
+                </li>
+                <li class="booking-item">Class: {{ booking.class_name }} </li>
+                <li class="booking-item">Time: {{ booking.requested_time }} </li>
+                <li class="booking-item">Time: {{ booking.requested_time }} </li>
+                <li class="booking-item">Date: {{ booking.requested_date|date:"d/m/Y" }} </li>
+
+                <!-- Button to open modal -->
+                <button type="button" data-toggle="modal" data-target="#confirmationModal" href="#confirmationModal"
+                    class="button mt-4 text-center cancel-button" id="delete-booking">Cancel Your
+                    Booking</button>
+
+                <!-- Modal https://getbootstrap.com/docs/4.0/components/modal/ -->
+                <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog"
+                    aria-labelledby="confirmationModal" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Are you sure?</h5>
+                                <button type="button" class="btn close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true"><i class="far fa-times-circle"></i></span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to cancel this
+                                booking? <br>We will miss you!
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary close" data-dismiss="modal">I changed
+                                    my mind...I want to sweat!</button>
+                                <button type="submit" class="btn btn-danger">Cancel it.</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
