@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-8">
+            <h2 class="text-center mt-2 mb-3">Edit your booking</h2>
+            <p class="mt-2 mb-4">If you make any changes, your booking status will change to 'pending' as we need
+                to ensure that the class is available.</p>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-4">
+            <!-- Display Booking ID -->
+            <h5 class="text-center my-3">Booking ID: {{ booking.booking_id }}</h5>
+            <!-- Booking form -->
+            <form method="POST" class="mb-5 booking-enquiry full-form">
+
+                {% csrf_token %}
+                {{ booking_form | crispy }}
+
+                <button type="submit" class="button mt-4 text-center submit-button">
+                    Edit Booking</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

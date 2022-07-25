@@ -417,7 +417,7 @@ class DeleteBooking(View):
         current_booking = retrieve_booking(self, request, User)
         # Return user to manage booking page
         validate_date(self, request, current_booking)
-        return render(request, 'manage_reservations.html',
+        return render(request, 'manage_booking.html',
                       {'booking': current_booking})
         
 

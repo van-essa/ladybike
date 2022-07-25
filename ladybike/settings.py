@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+from django.conf.locale.en import formats as en_formats
 from django.contrib.messages import constants as messages
 if os.path.isfile('env.py'):
     import env
@@ -59,11 +60,26 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
+# Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
+# User settings
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
+# Message settings
 MESSAGE_TAGS = {
         messages.DEBUG: 'alert-info',
         messages.INFO: 'alert-info',
@@ -93,6 +109,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.static',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -151,6 +168,13 @@ USE_L10N = True
 
 USE_TZ = True
 
+DATE_INPUT_FORMAT = ['%d/%M/%Y', ]
+
+en_formats.DATE_FORMAT = 'd/m/Y'
+
+en_formats.DATETIME_FORMAT = 'd/m/Y'
+
+TIME_INPUT_FORMATS = ['%H:%M', ]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/

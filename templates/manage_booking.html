@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center">
+        <div class="col-sm-8 text-center">
+            <h2 class=" mt-2 mb-3">Manage your bookings</h2>
+            <!-- Let the user get all the info to ensure that their are using the right credentials -->
+            <p class="mt-2">Hello, <strong>{{ customer.full_name }}</strong>!<br>
+                Here you'll find the classes booked with this email adress: 
+                <strong>{{ customer.email }}</strong></p>
+            <p class="mt-2">You can make changes to your bookings by using the options below.</p>
+            <p class="mt-2 mb-4">If you make any changes, your booking status will change to 'pending' as we need
+                to ensure that the class is available.</p>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center mb-5">
+        <div class="col-sm-12">
+            <div class="row d-flex justify-content-center">
+                <!-- For each booking -->
+                {% for bookings in booking %}
+                <div class="col-md-6 col-lg-4">
+                    <ul class="booking-list text-center" id="{{ booking.booking_id }}">
+                        <li class="booking-item">
+                            <h5>Booking ID: {{ booking.booking_id }} </h5>
+                        </li>
+                        <li class="booking-item">Time: {{ booking.class_name }} </li>
+                        <li class="booking-item">Time: {{ booking.requested_time }} </li>
+                        <li class="booking-item">Date: <span class="booking-date"
+                                id="{{ booking.requested_date }}">{{ booking.requested_date|date:"d/m/Y"}}</span>
+                        </li>
+                        <!-- If booking has been rejected -->
+                        {% if booking.status == 'No' %}
+                        <p class="mt-3 mb-4"> This booking was <strong>rejected</strong></p>
+                            <p>The class is either fully booked, outdated or has been canceled. We are sorry for the inconvenience.</p>
+                            {% else %}
+                            <div class="text-center">
+                                <a href="{% url 'edit_booking' booking.booking_id %}"
+                                    class="button submit-button inline-btn">Edit Booking</a>
+                                <a href="{% url 'delete_booking' booking.booking_id %}"
+                                    class="button cancel-button inline-btn">Cancel Booking</a>
+                            </div>
+                            {% endif %}
+                            <hr>
+                            </li>
+                    </ul>
+                </div>
+                <!-- Show two per row -->
+                {% if forloop.counter|divisibleby:2 %}
+            </div>
+            <div class="row d-flex justify-content-center">
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

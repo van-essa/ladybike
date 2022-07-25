@@ -26,10 +26,10 @@
 
     <!-- Navigation -->
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #d60675">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">c<span class="red-o">o</span>de<span
-                        class="thin">|star</span></span></span></a>
+            <a class="navbar-brand" href="{% url 'home' %}"><span class="brand">Lady<span class="pink-lady"><span
+                        class="thin">|Bike</span></span></span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -40,21 +40,31 @@
                         <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'articles' %}">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'articles' %}">Articles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'classes' %}">Home</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'classes' %}">Classes</a>
                     </li>
                     {% if user.is_authenticated %}
+                    <!-- Display manage bookings and logout option if user is logged in -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{% account_logout %}">Logout</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'manage_booking' %}
+                        black-text {% else %} text-white {% endif %}" href="{% url 'manage_booking' %}">Manage
+                            Bookings</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.resolver_match.url_name == 'account_logout' %}
+                        black-text {% else %} text-white {% endif %}" href="{% account_logout %}">Logout</a>
+                    </li>
+                    <!-- If user is not logged in display Register & Login -->
                     {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% account_signup %}">Register</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'account_signup' %}
+                        black-text {% else %} text-white {% endif %}" href="{% account_signup %}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% account_login %}">Login</a>
+                        <a class="nav-link {% if request.resolver_match.url_name == 'account_login' %}
+                        black-text {% else %} text-white {% endif %}" href="{% account_login %}">Login</a>
                     </li>
                     {% endif %}
                 </ul>

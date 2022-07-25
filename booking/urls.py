@@ -1,4 +1,4 @@
-from reservations import views
+from booking import views
 from django.urls import path
 
 

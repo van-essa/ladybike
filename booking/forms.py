@@ -4,11 +4,11 @@ from django.conf import settings
 
 
 class CustomerForm(forms.ModelForm):
+    """ The Customer Form Model """
 
-     """ The Customer Form Model """
     class Meta:
         model = Customer
-        fields = ('full_name', 'email', 'phone_number')
+        fields = ('full_name', 'email')
 
 
 class BookingForm(forms.ModelForm):
