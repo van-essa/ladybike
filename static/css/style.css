@@ -212,11 +212,13 @@ body {
     box-sizing: border-box;
 }
 
-@media (min-width: 992px)
-.col-lg-8 {
-    flex: 0 0 auto;
-    width: 66.66667%;
+@media (min-width: 992px){
+    .col-lg-8 {
+        flex: 0 0 auto;
+        width: 66.66667%;
+    }
 }
+
 
 /* Info displayed on the home page */
 .card {
@@ -260,22 +262,29 @@ body {
     align-items: center !important;
 }
 
-@media (min-width: 992px)
-.col-lg-6 {
-    flex: 0 0 auto;
-    width: 50%;
+
+@media (min-width: 992px){
+    .col-lg-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
 }
 
-@media (min-width: 992px)
-.col-lg-4 {
-    flex: 0 0 auto;
-    width: 33.33333%;
+
+@media (min-width: 992px){
+    .col-lg-4 {
+        flex: 0 0 auto;
+        width: 33.33333%;
+    }
 }
 
-@media (min-width: 992px)
-.mt-lg-0 {
-    margin-top: 0 !important;
+
+@media (min-width: 992px){
+    .mt-lg-0 {
+        margin-top: 0 !important;
+    }
 }
+
 
 .ms-auto {
     margin-left: auto !important;
@@ -326,12 +335,17 @@ body {
     width: 100% !important;
 }
 
-
-@media (min-width: 768px)
 .col-md-6 {
-    flex: 0 0 auto;
-    width: 50%;
+    padding-right: 30px;
 }
+
+@media (min-width: 768px){
+    .col-md-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+
 
 .justify-content-start {
     justify-content: flex-start !important;
@@ -346,6 +360,72 @@ body {
     margin-right: calc(var(--bs-gutter-x) * -.5);
     margin-left: calc(var(--bs-gutter-x) * -.5);
 }
+
+
+/* Meet the team field */
+.py-5 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
+.pt-5 {
+    padding-top: 3rem !important;
+}
+.my-5 {
+    margin-top: 3rem !important;
+    margin-bottom: 3rem !important;
+}
+.border-0 {
+    border: 0 !important;
+}
+.position-relative {
+    position: relative !important;
+}
+.shadow-lg {
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 18%) !important;
+}
+.card {
+    position: relative;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,0.125);
+    border-radius: .25rem;
+}
+
+.member-profile {
+    top: -50px;
+    left: 0;
+}
+.text-center {
+    text-align: center !important;
+}
+.w-100 {
+    width: 100% !important;
+}
+.position-absolute {
+    position: absolute !important;
+}
+
+.member-profile img {
+    width: 100px;
+    height: 100px;
+}
+.rounded-circle {
+    border-radius: 50% !important;
+}
+.mx-auto {
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0 / 8%) !important;
+}
+
 
 /* Nav bar display if user logged in or not */
 
