@@ -163,29 +163,29 @@ class BookingEnquiry(View):
                        'booking_form': booking_form})
     
     
-    def fetch_booking(self, request, User):
-        """ Get any existing bookings for the customer in the
+def fetch_booking(self, request, User):
+    """ Get any existing bookings for the customer in the
         Booking model. If there are no bookings then redirect
         customer to Booking page.
         """
-        customer_email = request.user.email
-        if len(Customer.objects.filter(email=customer_email)) != 0:
-            # If customer exists in model
-            current_customer = Customer.objects.get(email=customer_email)
-            current_customer_id = current_customer.pk
+    customer_email = request.user.email
+    if len(Customer.objects.filter(email=customer_email)) != 0:
+        # If customer exists in model
+        current_customer = Customer.objects.get(email=customer_email)
+        current_customer_id = current_customer.pk
 
-            # Get any bookings using the customer instance
-            get_booking = Booking.objects.filter(
-            customer=current_customer_id).values().order_by('requested_date')
+        # Get any bookings using the customer instance
+        get_booking = Booking.objects.filter(
+        customer=current_customer_id).values().order_by('requested_date')
             
-            if len(get_booking) == 0:
-                # if no bookings
-                return None
-            else:
-                return get_booking
-        else:
-            # if user is not present in customer model
+        if len(get_booking) == 0:
+            # if no bookings
             return None
+        else:
+            return get_booking
+    else:
+        # if user is not present in customer model
+         return None
 
 
 def validate_date(self, request, booking):
@@ -202,7 +202,7 @@ class ManageBooking(View):
     def get(self, request, User=User, *args, **kwargs):
         if request.user.is_authenticated:
             customer = get_customer_instance(request, User)
-            current_booking = retrieve_booking(self, request, User)
+            current_booking = fetch_booking(self, request, User)
 
             # If the user has no bookings or does not exist as a 'customer'
             if current_booking is None:
@@ -345,7 +345,7 @@ class EditBooking(View):
                                      f"Booking {booking_id} has now"
                                      " been updated.")
                 # Fetch new list of bookings to display
-                current_booking = retrieve_booking(
+                current_booking = fetch_booking(
                     self, request, User)
                 validate_date(self, request, current_booking)
                 # Return user to manage booking page
@@ -417,7 +417,7 @@ class DeleteBooking(View):
                              f"Booking {booking_id} has now "
                              "been cancelled.")
         # Get updated list of bookings
-        current_booking = retrieve_booking(self, request, User)
+        current_booking = fetch_booking(self, request, User)
         # Return user to manage booking page
         validate_date(self, request, current_booking)
         return render(request, 'manage_booking.html',

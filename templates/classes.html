@@ -25,12 +25,12 @@
     </div>
   </header>
 
-  <div class="card card-body shadow-xl mx-3 mx-md-4 mt-n6">
+  <div class="container justify-content-center">
 
-                <!-- Content Row-->
+                <!-- Content Card-->
                 <div class="card-group gx-4 gx-lg-5">
-                    <div class="col-md-4 mb-5">
-                        <div class="card h-100" style="width: 20rem;">
+                    <div class="col-md-4 mb-5 mt-4 pl-5">
+                        <div class="card h-100" style="width: 23rem;">
                             <div class="card-body">
                                 <img  class="card-img-top" src="{% static 'images/header.jpg' %}" alt="spinning_class">
                                 <h2 class="card-title pt-4" style="color: #d606ba;">Spinning</h2>
@@ -40,13 +40,13 @@
                                     rest intervals to get you recovered for the next burst.
                                 </p>
                             </div>
-                            <div class="card-footer text-center" style="background-color: #d606ba;"><a class="btn btn-secondary btn-lg" href="booking.html">Book</a></div>
+                            <div class="card-footer text-center" style="background-color: #d606ba;"><a class="btn btn-secondary btn-lg" href="{% url 'booking' %}">Book</a></div>
                         </div>
                     </div>
 
 
-                    <div class="col-md-4 mb-5">
-                        <div class="card h-100" style="width: 20rem;">
+                    <div class="col-md-4 mb-5 mt-4 px-4">
+                        <div class="card h-100" style="width: 23rem;">
                             <div class="card-body">
                                 <img  class="card-img-top" src="{% static 'images/ride_that_hill_class.png' %}" alt="spinning_class">
                                 <h2 class="card-title pt-4" style="color: #d606ba;">Ride That Hill</h2>
@@ -56,13 +56,13 @@
                                     in grade into a very steep mountain like grade by the end. A great class to increase your strength and power.
                                 </p>
                             </div>
-                            <div class="card-footer text-center" style="background-color: #d606ba;"><a class="btn btn-secondary btn-lg" href="booking.html">Book</a></div>
+                            <div class="card-footer text-center" style="background-color: #d606ba;"><a class="btn btn-secondary btn-lg" href="{% url 'booking' %}">Book</a></div>
                         </div>
                     </div>
 
 
-                    <div class="col-md-4 mb-5">
-                        <div class="card h-100" style="width: 20rem;">
+                    <div class="col-md-4 mb-5 mt-4 px-5">
+                        <div class="card h-100" style="width: 23rem;">
                             <div class="card-body">
                                 <img  class="card-img-top" src="{% static 'images/ladybike_class.jpg' %}" alt="spinning_class">
                                 <h2 class="card-title pt-4" style="color: #d606ba;">Ladybike</h2>
@@ -72,7 +72,7 @@
                                     It combines intervals of cardio with strength conditioning, moving quickly between 
                                     the bike and equipment on the ground. Expect to work with dumbbells, bands, gliders, and your own body-weight.</p>
                             </div>
-                            <div class="card-footer text-center" style="background-color: #d606ba;"><a class="btn btn-secondary btn-lg" href="booking.html">Book</a></div>
+                            <div class="card-footer text-center" style="background-color: #d606ba;"><a class="btn btn-secondary btn-lg" href="{% url 'booking' %}">Book</a></div>
                         </div>
                     </div>
                 </div>

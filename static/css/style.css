@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@300;700&display=swap"');
+
 *,
 *::before,
 *::after {
@@ -5,21 +7,6 @@
 
 body {
     background-color: #F9FAFC;
-}
-
-.brand {
-    font-family: Lora, serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: #4A4A4F;
-}
-
-.pink-lady {
-    color: #fde3e9;
-}
-
-.thin {
-    font-weight: 300;
 }
 
 .light-bg {
@@ -442,6 +429,21 @@ body {
 }
 
 /* Nav bar display if user logged in or not */
+
+.brand {
+    font-family: Lora, serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #4A4A4F;
+}
+
+.pink-lady {
+    color: #fde3e9;
+}
+
+.thin {
+    font-weight: 300;
+}
 
 .back-text {
     color: #0000 !important;
