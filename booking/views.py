@@ -2,9 +2,11 @@ from django.shortcuts import render, reverse, get_object_or_404
 from django.views import View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import ClassName, Customer, Booking
 from .forms import CustomerForm, BookingForm
+from django.contrib.auth import authenticate, login, logout
 from django.utils.timezone import now
 import datetime
 
@@ -41,14 +43,13 @@ def get_customer_instance(request, User):
         return Booking.classes_total - Booking.seats
 
 
-def check_availabilty(user_requested_time, user_requested_date):
+def check_availabilty(customer_class_name, customer_requested_date):
     """ Check availability against Booking model using customer input """
 
-    # Check to see how many classes exist at that time/date
-    classes_booked = len(Booking.objects.filter(
+    # Check to see how many classes exist at that date
+    classes_booked = len(float(Booking.objects.filter(
         class_name=customer_class_name,
-        requested_time=customer_requested_time,
-        requested_date=customer_requested_date, status="Available"))
+        requested_date=customer_requested_date, status="Available")))
 
     # Return number of classes
     return classes_booked
@@ -84,9 +85,8 @@ class BookingEnquiry(View):
 
         if customer_form.is_valid() and booking_form.is_valid():
             # Fetch information from forms
-            customer_class_name = requesr.POST.get('class_name')
+            customer_class_name = request.POST.get('class_name')
             customer_requested_date = request.POST.get('requested_date')
-            customer_requested_time = request.POST.get('requested_time')
             customer_name = request.POST.get('full_name')
 
             # Convert date in to format required by django
@@ -95,7 +95,7 @@ class BookingEnquiry(View):
             
             # Check to see how many bookings exist at that time/date
             classes_booked = check_availabilty(
-                customer_requested_time, date_formatted)
+                customer_requested_date, date_formatted)
 
             # Get the number of availble seat spot in the classes
             available_seats = classes_left()
@@ -108,8 +108,8 @@ class BookingEnquiry(View):
                 """
                 messages.add_message(
                     request, messages.ERROR,
-                    "Unfortunately," f"{customer_class_name} " "is fully booked at "
-                    f"{customer_requested_time} on {customer_requested_date}.")
+                    "Unfortunately," f"{customer_class_name} " "is fully booked on "
+                    f"{customer_requested_date}.")
 
                 return render(request, 'booking.html',
                               {'customer_form': customer_form,
@@ -143,8 +143,7 @@ class BookingEnquiry(View):
                 messages.add_message(
                         request, messages.SUCCESS,
                         f"Thank you {customer_name}, for booking "
-                        f"{customer_class_name} at "
-                        f"{customer_requested_time} on "
+                        f"{customer_class_name} on "
                         f"{customer_requested_date}! We are looking forward to sweating with you!")
 
                 # Return blank forms so the same enquiry isn't sent twice.
@@ -308,14 +307,13 @@ class EditBooking(View):
         if booking_form.is_valid():
             # get the post information from the form
             customer_requested_date = request.POST.get('requested_date')
-            customer_requested_time = request.POST.get('requested_time')
             # Convert date into format required by django
             date_formatted = datetime.datetime.strptime(
                 customer_requested_date, "%d/%m/%Y").strftime('%Y-%m-%d')
 
             # Check the amount of bookings at that date and time
             classes_booked = check_availabilty(
-                customer_requested_time, date_formatted)
+                customer_requested_date, date_formatted)
 
             # Get the number of availble seat spot in the classes
             available_seats = classes_left()
@@ -327,13 +325,12 @@ class EditBooking(View):
                 """
                 messages.add_message(
                     request, messages.ERROR,
-                    "Unfortunately," f"{customer_class_name} " "is fully booked at "
-                    f"{customer_requested_time} on {customer_requested_date}.")
+                    "Unfortunately," f"{customer_class_name} " "is fully booked on "
+                    f"{customer_requested_date}.")
 
             else:
                 # Update the existing booking with the form data.
                 booking.booking_id = booking_id
-                booking.requested_time = customer_requested_time
                 # Pass formatted date to prevent it from saving incorrectly
                 booking.requested_date = date_formatted
                 booking.requested_class = request.POST.get('class_name')

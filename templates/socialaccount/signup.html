@@ -1,22 +1,50 @@
-{% extends "socialaccount/base.html" %}
+{% extends "base.html" %}
 
 {% load i18n %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
-
+ 
 {% block content %}
-    <h1>{% trans "Sign Up" %}</h1>
+{% load static %} 
+<div class="page-header align-items-start min-vh-100" style="background-image: url({% static 'images/bike_pink.jpg' %});" loading="lazy">
+  <div class="container my-auto">
+<div class="row py-2"> 
+  <div class="col-lg-4 col-md-8 col-12 mx-auto"> 
+    <div class="card z-index-0 fadeIn3 fadeInBottom"> 
+      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2"> 
+        <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1" style="background-color: #d606ba;"> 
+          <h4 class="text-white font-weight-bolder text-center mt-2 mb-0"> Sign Up </h4> 
+          <div class="row mt-3"> 
+            <p class="mb-0 text-white text-center"> Enter your credentials to register </p> 
+          </div> 
+        </div> 
+      </div> 
+      <div class="card-body"> 
+        <form role="form" class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}"> 
+          {% csrf_token %}
+          {{ form.as_p }}
+          {% if redirect_field_value %}
+          <input id="csrf_token" name="{{ redirect_field_name }}" type="hidden" value="{{ redirect_field_value }}"> 
+          <div class="input-group input-group-outline mb-3"> 
+            <input class="form-control" id="username" name="username" placeholder="Username" required="" type="text" value=""> 
+          </div> <div class="input-group input-group-outline mb-3"> 
+            <input class="form-control" id="email" name="email" placeholder="Email" required="" type="email" value=""> 
+          </div> <div class="input-group input-group-outline mb-3"> <input class="form-control" id="password" name="password" placeholder="Password" required="" type="password" value=""> 
+          </div> <div class="form-check form-check-info text-start ps-0"> 
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked="">
+            {% endif %}
+          </div>
+          <div class="text-center">
+            <button class="btn btn-signup right" type="submit" style="background-color: #d606ba;">{% trans "Sign Up" %} &raquo;</button>
+            </div> 
+          <p class="mt-4 text-sm text-center"> Already have an account? <a href="/login.html" class="text-primary text-gradient font-weight-bold">Sign IN</a> </p> 
+        </form> 
+      </div> 
+    </div> 
+  </div> 
+</div>
+  </div>
+</div>
 
-<p>{% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to
-{{site_name}}. As a final step, please complete the following form:{% endblocktrans %}</p>
-
-<form class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
-</form>
 
 {% endblock %}

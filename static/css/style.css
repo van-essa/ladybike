@@ -534,6 +534,10 @@ input#id_requested_date {
     color:#d606ba
 }
 
+.fuxia-thin {
+    font-weight: 300;
+}
+
 /* Articles detail page */
 .post-title {
     margin-top: 20%;

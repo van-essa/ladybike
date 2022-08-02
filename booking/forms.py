@@ -5,10 +5,12 @@ from django.conf import settings
 
 class CustomerForm(forms.ModelForm):
     """ The Customer Form Model """
+    password = forms.CharField(widget=forms.PasswordInput())
+    confirm_password = forms.CharField(widget=forms.PasswordInput())
 
     class Meta:
         model = Customer
-        fields = ('full_name', 'email')
+        fields = ('full_name', 'email', 'password')
 
 
 class BookingForm(forms.ModelForm):
@@ -17,4 +19,4 @@ class BookingForm(forms.ModelForm):
 
     class Meta:
         model = Booking
-        fields = ('class_name', 'requested_date', 'requested_time')
+        fields = ('class_name', 'requested_date')
