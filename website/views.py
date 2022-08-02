@@ -1,14 +1,25 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 from django.contrib.auth.models import User
 from django.conf import settings
 from booking.models import Customer
+from django import forms
 
 
 # Create your views here.
 def index(request):
     """ Return homepage """
     return render(request, 'index.html')
+
+def sign_up(request):
+    if request.method == "POST":
+        form = CustomerForm(request.POST)
+        if customer_form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = CustomerForm() 
+    return render(request,'signup.html', {'form': form})
 
 
 def get_customer_instance(request, User):

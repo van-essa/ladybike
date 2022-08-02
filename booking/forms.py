@@ -1,16 +1,17 @@
 from .models import Customer, Booking
 from django import forms
 from django.conf import settings
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 
 class CustomerForm(forms.ModelForm):
     """ The Customer Form Model """
-    password = forms.CharField(widget=forms.PasswordInput())
-    confirm_password = forms.CharField(widget=forms.PasswordInput())
+    email = forms.EmailField(required=True)
 
     class Meta:
         model = Customer
-        fields = ('full_name', 'email', 'password')
+        fields = ('full_name', 'email')
 
 
 class BookingForm(forms.ModelForm):

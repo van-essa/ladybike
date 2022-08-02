@@ -184,7 +184,7 @@ def fetch_booking(self, request, User):
             return get_booking
     else:
         # if user is not present in customer model
-         return None
+        return None
 
 
 def validate_date(self, request, booking):
