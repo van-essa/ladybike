@@ -528,3 +528,20 @@ input#id_requested_date {
     background: #d606ba;
     color: #Effbed;
 }
+
+/* Booking Page */
+.fuxia-lady {
+    color:#d606ba
+}
+
+/* Articles detail page */
+.post-title {
+    margin-top: 20%;
+    margin-left: 5%;
+    color:#d606ba
+}
+
+.post-subtitle {
+    margin-left: 5%;
+    color: lightgray;
+}

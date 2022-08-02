@@ -9,7 +9,7 @@
         <div class="col-12 mt-3 left">
             <div class="row">
                 {% for post in post_list %}
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="image-container">
@@ -17,7 +17,7 @@
                                 <img class="card-img-top"
                                     src="https://stagescycling.com/media/.renditions/wysiwyg/stages-cycling/landing-pages/home/2021/commercial_indoor_cycles-smiling-700px_by_500px.jpg">
                                 {% else %}
-                                <img class="card-img-top" src=" https://ride-berlin.com/wp-content/uploads/2022/03/Website-1280x1024-NEU-1.png">
+                                <img class="card-img-top" src="{{ post.featured_image.url }}">
                                 {% endif %}
                                 <div class="image-flash">
                                     <p class="author">Author: {{ post.author }}</p>
