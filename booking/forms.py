@@ -1,7 +1,9 @@
 from .models import Customer, Booking
 from django import forms
-from django.conf import settings
+from datetime import date
 
+
+today = date.today()
 
 
 class CustomerForm(forms.ModelForm):
@@ -9,15 +11,17 @@ class CustomerForm(forms.ModelForm):
     email = forms.EmailField(required=True)
 
     class Meta:
+        """Custome Field Form """
         model = Customer
         fields = ('full_name', 'email')
 
 
 class BookingForm(forms.ModelForm):
     """ The Booking Form Model """
-    requested_date = forms.DateField(input_formats=settings.DATE_INPUT_FORMAT)
+    requested_date = forms.DateField(widget=forms.TextInput
+    (attrs={'min': today, 'value': today, 'type': 'date'}), required=True)
 
     class Meta:
+        """Booking form field"""
         model = Booking
         fields = ('class_name', 'requested_date')
-

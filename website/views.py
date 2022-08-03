@@ -11,7 +11,9 @@ def index(request):
     """ Return homepage """
     return render(request, 'index.html')
 
+
 def sign_up(request):
+    """Sign Up"""
     if request.method == "POST":
         form = Customer(request.POST)
         if form.is_valid():

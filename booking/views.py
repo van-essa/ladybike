@@ -5,7 +5,6 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import ClassName, Customer, Booking
 from .forms import CustomerForm, BookingForm
-from django.contrib.auth import authenticate, login, logout
 from django.utils.timezone import now
 import datetime
 
@@ -13,21 +12,24 @@ import datetime
 # Create your views here.
 
 def classes_urls(request):
+    """ Return to classes url """
     return render(request, "classes.html")
 
 
 def booking_view(request):
-    """ Order the data by the date closest to the current 
-    date only for dates in the future, not for dates that 
+    """ Order the data by the date closest to the current \
+    date only for dates in the future, not for dates that \
     have passed
     """
 
     # Show the current and upcoming dates
     today = now().date()
-    classes=ClassName.objects.all()
-    booking_list = Booking.objects.filter(booking_date__gte=today).order_by('requested_date')
+    classes = ClassName.objects.all()
+    booking_list = Booking.objects.filter(
+        booking_date__gte=today).order_by('requested_date')
     
-    return render(request, 'booking.html', {'classes':classes, 'booking_list': booking_list})
+    return render(request, 'booking.html', {
+        'classes': classes, 'booking_list': booking_list})
 
 
 def get_customer_instance(request, User):
@@ -37,11 +39,11 @@ def get_customer_instance(request, User):
 
     return customer
 
-    """ Counting the amount of classes available that got booked """
+    # Counting the amount of classes available that got booked
     def classes_total():
         return Booking.class_name.filter(classstatus='Available').count()
 
-    """ Removing the booked seats with the total available seats """
+    # Removing the booked seats with the total available seats
     def classes_left():
         return Booking.classes_total - Booking.seats
 
@@ -76,8 +78,7 @@ class BookingEnquiry(View):
             booking_form = BookingForm()
 
         return render(request, "booking.html",
-                      {'customer_form': customer_form,
-                       'booking_form': booking_form})  
+                      {'customer_form': customer_form, 'booking_form': booking_form}) 
 
     def post(self, request, User=User, *args, **kwargs):
         # Get post data from forms
@@ -92,8 +93,8 @@ class BookingEnquiry(View):
 
             # Convert date in to format required by django
             date_formatted = datetime.datetime.strptime(
-                customer_requested_date, "%d/%m/%Y").strftime('%Y-%m-%d')
-            
+                customer_requested_date, "%Y-%m-%d").strftime('%d-%m-%Y')
+
             # Check to see how many bookings exist at that time/date
             classes_booked = check_availabilty(
                 customer_requested_date, date_formatted)
@@ -103,13 +104,14 @@ class BookingEnquiry(View):
 
             # Compare number of bookings to number of classes available
             if classes_booked >= Booking.seats:
-                """ If the number of classes booked is bigger than or equal to the
-                max number of classes left in the LadyBike Gym, the form will stop 
-                form being submitted
-                """
+                # If the number of classes booked is bigger
+                # than or equal to the max number of classes
+                # left in the LadyBike Gym, the form will stop
+                # form being submitted
                 messages.add_message(
                     request, messages.ERROR,
-                    "Unfortunately," f"{customer_class_name} " "is fully booked on "
+                    "Unfortunately," f"{customer_class_name} " "\
+                        is fully booked on "
                     f"{customer_requested_date}.")
 
                 return render(request, 'booking.html',
@@ -145,7 +147,8 @@ class BookingEnquiry(View):
                         request, messages.SUCCESS,
                         f"Thank you {customer_name}, for booking "
                         f"{customer_class_name} on "
-                        f"{customer_requested_date}! We are looking forward to sweating with you!")
+                        f"{customer_requested_date}! \
+                            We are looking forward to sweating with you!")
 
                 # Return blank forms so the same enquiry isn't sent twice.
                 url = reverse('booking')
@@ -161,8 +164,8 @@ class BookingEnquiry(View):
         return render(request, 'booking.html',
                       {'customer_form': customer_form,
                        'booking_form': booking_form})
-    
-    
+
+
 def fetch_booking(self, request, User):
     """ Get any existing bookings for the customer in the
     Booking model. If there are no bookings then redirect
@@ -255,7 +258,7 @@ class EditBooking(View):
             else:
                 # Convert date to display in dd/mm/YYYY format
                 date_to_string = booking.requested_date.strftime(
-                    "%d/%m/%Y")
+                    "%Y-%m-%d")
                 booking.requested_date = date_to_string
 
                 # Get customer info
@@ -310,7 +313,7 @@ class EditBooking(View):
             customer_requested_date = request.POST.get('requested_date')
             # Convert date into format required by django
             date_formatted = datetime.datetime.strptime(
-                customer_requested_date, "%d/%m/%Y").strftime('%Y-%m-%d')
+                customer_requested_date, "%Y-%m-%d").strftime('%d-%m-%Y')
 
             # Check the amount of bookings at that date and time
             classes_booked = check_availabilty(
@@ -321,9 +324,8 @@ class EditBooking(View):
 
             # Compare number of bookings to number of classes available
             if classes_booked >= Booking.seats:
-                """ if the amount of classes already booked is equal to
-                the max tables then stop form from submitting.
-                """
+                """ if the amount of classes already booked is equal to \
+                the max tables then stop form from submitting. """
                 messages.add_message(
                     request, messages.ERROR,
                     "Unfortunately," f"{customer_class_name} " "is fully booked on "
@@ -363,6 +365,7 @@ class EditBooking(View):
                        'booking': booking,
                        'customer': customer, })
 
+
 class DeleteBooking(View):
     """ View for user to delete bookings """
     def get(self, request, booking_id, User=User, *args, **kwargs):
@@ -397,7 +400,7 @@ class DeleteBooking(View):
                                    'booking': booking,
                                    'booking_id': booking_id})
         else:
-            # Prevent users from accessing this page if not logged in 
+            """Prevent users from accessing this page if not logged in""" 
             messages.add_message(
                 request, messages.ERROR, "You must be logged in to "
                 "manage your bookings.")
@@ -420,9 +423,3 @@ class DeleteBooking(View):
         validate_date(self, request, current_booking)
         return render(request, 'manage_booking.html',
                       {'booking': current_booking})
-        
-
-# today = datetime.now().strftime('%Y-%m-%d')
-# Booking_data = Booking.objects.filter(active='a').filter((date__gte=today)|(date=today)).order_by('date')
-
-  

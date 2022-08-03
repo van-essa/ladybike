@@ -136,22 +136,21 @@ DATABASES = {
 }
 
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',  # noqa
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator', # noqa
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',  # noqa
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',  # noqa
     },
 ]
 
@@ -169,11 +168,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-DATE_INPUT_FORMAT = ['%d/%M/%Y', ]
+DATE_INPUT_FORMAT = ['%Y-%M-%d', ]
 
-en_formats.DATE_FORMAT = 'd/m/Y'
+en_formats.DATE_FORMAT = 'Y-m-d'
 
-en_formats.DATETIME_FORMAT = 'd/m/Y'
+en_formats.DATETIME_FORMAT = 'Y-m-d'
 
 TIME_INPUT_FORMATS = ['%H:%M', ]
 
@@ -200,3 +199,7 @@ AUTHENTICATION_BACKENDS = (
     # `allauth` specific authentication methods, such as login by e-mail 
     'allauth.account.auth_backends.AuthenticationBackend',
 )
+
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}

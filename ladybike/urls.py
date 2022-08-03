@@ -21,7 +21,7 @@ from booking import views
 
 urlpatterns = [
     path('', include('website.urls'), name='website_urls'),
-    path('admin/', admin.site.urls), # Django admin route
+    path('admin/', admin.site.urls),  # Django admin route
     path('articles/', include('articles.urls'), name='articles-urls'),
     path('summernote/', include('django_summernote.urls')),
     path('classes', views.classes_urls),
@@ -30,8 +30,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
 ]
 
-handler404 = 'website.views.error_403'
+handler403 = 'website.views.error_403'
 handler404 = 'website.views.error_404'
 handler500 = 'website.views.error_500'
-
-

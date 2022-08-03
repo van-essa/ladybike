@@ -1,9 +1,6 @@
 from django.db import models
 
 
-
-# Create your models here.
-
 # Create your models here.
 class Customer(models.Model):
     """ Customer information model """
@@ -15,9 +12,10 @@ class Customer(models.Model):
         # return the full name as this is easier for the admin to read
         return self.full_name
 
+
 class ClassName(models.Model):
     """ Class Type Model """
-    
+
     CLASS_CHOICES = ((1, 'Spinning'),
                      (2, 'Ride_that_hill'),
                      (3, 'LadyBike'))
@@ -27,13 +25,14 @@ class ClassName(models.Model):
     def __str__(self):
         return str(self.classes)
 
+
 class Booking(models.Model):
     """ Booking Class Model """
 
     STATUS_CHOICES = (('Fully_Booked', 'Fully_Booked'),
                       ('Availble', 'Availble'))
-    
-    OPTION_STATUS = (('y','Yes'), ('n', 'No'), ('p', 'Pending'))
+
+    OPTION_STATUS = (('y', 'Yes'), ('n', 'No'), ('p', 'Pending'))
 
     class Meta:
         verbose_name_plural = 'Booking'
@@ -41,22 +40,31 @@ class Booking(models.Model):
     booking_id = models.AutoField(primary_key=True)
     customer = models.ForeignKey(
         Customer, on_delete=models.CASCADE, related_name="customer", null=True)
-    class_name = models.ForeignKey('ClassName', on_delete=models.CASCADE, default=True)
-    status = models.CharField(max_length=15, choices=STATUS_CHOICES, default='Available')
+    class_name = models.ForeignKey(
+        'ClassName', on_delete=models.CASCADE, default=True)
+    status = models.CharField(
+        max_length=15, choices=STATUS_CHOICES, default='Available')
     seats = models.IntegerField(default=True, null=False)
     requested_date = models.DateField()
     requested_time = models.TimeField()
-    bookingtatus = models.CharField(max_length=10, default='p', choices=OPTION_STATUS)
+    bookingtatus = models.CharField(
+        max_length=10, default='p', choices=OPTION_STATUS)
 
     def __str__(self):
         return str(self.class_name)
 
+
 """ Counting the amount of classes available that got booked """
+
+
 @property
 def classes_total(self):
         return self.class_name.filter(classstatus='Available').count()
 
+
 """ Removing the booked seats with the total availbel seats """    
+
+
 @property
 def classes_left(self):
         return self.classes_total - self.seats
