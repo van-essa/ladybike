@@ -20,3 +20,4 @@ class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
         fields = ('class_name', 'requested_date')
+

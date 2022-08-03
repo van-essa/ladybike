@@ -549,3 +549,30 @@ input#id_requested_date {
     margin-left: 5%;
     color: lightgray;
 }
+
+/* Animated Duration */
+
+.animate__animated.animate__swing {
+    --animate-duration: 2s;
+  }
+
+/* Crispy form inputs */
+
+input#id_name.textinput.textInput,
+input#id_email.emailinput,
+input#id_full_name.textinput.textInput,
+input#id_requested_date {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Date picker */
+
+.ui-widget {
+    font-family: 'Raleway', sans-serif;
+}
+
+.ui-widget-header {
+    background: #d606ba;
+    color: #Effbed;
+}

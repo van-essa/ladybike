@@ -5,7 +5,7 @@
 
 <head>
     <meta name="description"
-        content="Ladybike, a biking booking system only for women">
+        content="Ladybike, biking classes only for women">
     <title>LadyBike</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -22,6 +22,9 @@
 
     <!-- JQuery -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css">
+
+    <!-- Animate for heading & forms -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -58,7 +61,7 @@
                 </ul>
                     <ul class="navbar-nav">
                         {% if user.is_authenticated %}
-                        <!-- Display manage bookings, edit customer details & logout option if user is logged in -->
+                        <!-- Display manage bookings, like the artcles & logout option if user is logged in -->
 
                         <li class="nav-item fuxia-bground ml-auto">
                         <a class="nav-link {% if request.resolver_match.url_name == 'manage_booking' %}

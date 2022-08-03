@@ -193,7 +193,7 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTHENTICATION_BACKENDS = ( 
+AUTHENTICATION_BACKENDS = (
     # Needed to login by username in Django admin, regardless of `allauth` 
     'django.contrib.auth.backends.ModelBackend',
     

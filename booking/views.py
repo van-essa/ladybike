@@ -2,7 +2,6 @@ from django.shortcuts import render, reverse, get_object_or_404
 from django.views import View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import ClassName, Customer, Booking
 from .forms import CustomerForm, BookingForm
@@ -18,7 +17,10 @@ def classes_urls(request):
 
 
 def booking_view(request):
-    """  Order the data by the date closest to the current date only for dates in the future, not for dates that have passed """
+    """ Order the data by the date closest to the current 
+    date only for dates in the future, not for dates that 
+    have passed
+    """
 
     # Show the current and upcoming dates
     today = now().date()
@@ -38,7 +40,7 @@ def get_customer_instance(request, User):
     """ Counting the amount of classes available that got booked """
     def classes_total():
         return Booking.class_name.filter(classstatus='Available').count()
-    
+
     """ Removing the booked seats with the total available seats """
     def classes_left():
         return Booking.classes_total - Booking.seats
@@ -75,7 +77,7 @@ class BookingEnquiry(View):
 
         return render(request, "booking.html",
                       {'customer_form': customer_form,
-                       'booking_form': booking_form})    
+                       'booking_form': booking_form})  
 
     def post(self, request, User=User, *args, **kwargs):
         # Get post data from forms
@@ -163,9 +165,9 @@ class BookingEnquiry(View):
     
 def fetch_booking(self, request, User):
     """ Get any existing bookings for the customer in the
-        Booking model. If there are no bookings then redirect
-        customer to Booking page.
-        """
+    Booking model. If there are no bookings then redirect
+    customer to Booking page.
+    """
     customer_email = request.user.email
     if len(Customer.objects.filter(email=customer_email)) != 0:
         # If customer exists in model
@@ -174,7 +176,7 @@ def fetch_booking(self, request, User):
 
         # Get any bookings using the customer instance
         get_booking = Booking.objects.filter(
-        customer=current_customer_id).values().order_by('requested_date')
+            customer=current_customer_id).values().order_by('requested_date')
             
         if len(get_booking) == 0:
             # if no bookings
