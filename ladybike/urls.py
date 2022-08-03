@@ -21,14 +21,13 @@ from booking import views
 
 urlpatterns = [
     path('', include('website.urls'), name='website_urls'),
-    path('', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls), # Django admin route
     path('articles/', include('articles.urls'), name='articles-urls'),
     path('summernote/', include('django_summernote.urls')),
     path('classes', views.classes_urls),
     path('booking/', include(
         'booking.urls'), name='booking_urls'),
-    path("accounts/", include("allauth.urls")),
+    path('accounts/', include('allauth.urls')),
 ]
 
 handler404 = 'website.views.error_403'

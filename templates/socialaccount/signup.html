@@ -20,7 +20,7 @@
         </div> 
       </div> 
       <div class="card-body"> 
-        <form role="form" class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}"> 
+        <form role="form" class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}"> 
           {% csrf_token %}
           {{ form.as_p }}
           {% if redirect_field_value %}
@@ -37,7 +37,7 @@
           <div class="text-center">
             <button class="btn btn-signup right" type="submit" style="background-color: #d606ba;">{% trans "Sign Up" %} &raquo;</button>
             </div> 
-          <p class="mt-4 text-sm text-center"> Already have an account? <a href="/login.html" class="text-primary text-gradient font-weight-bold">Sign IN</a> </p> 
+          <p class="mt-4 text-sm text-center"> Already have an account? <a href="{{ login_url }}" class="text-primary text-gradient font-weight-bold">Sign IN</a> </p> 
         </form> 
       </div> 
     </div> 

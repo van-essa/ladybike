@@ -2,7 +2,7 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block head_title %}{% trans 'Signup' %}{% endblock %}
  
 {% block content %}
 {% load static %} 
@@ -20,7 +20,7 @@
         </div> 
       </div> 
       <div class="card-body"> 
-        <form role="form" class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}"> 
+        <form role="form" class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}"> 
           {% csrf_token %}
           {{ form.as_p }}
           {% if redirect_field_value %}
@@ -35,9 +35,9 @@
             {% endif %}
           </div> 
           <div class="text-center"> 
-            <button type="submit" name="register" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0" style="background-color: #d606ba;">{% trans "Sign Up" %} &raquo;</button> 
+            <button type="submit" name="register" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0" style="background-color: #d606ba;">{% trans 'Sign Up' %} &raquo;</button> 
           </div> 
-          <p class="mt-4 text-sm text-center"> Already have an account? <a href="{{ login_url }}"" class="text-primary text-gradient font-weight-bold">Sign IN</a> </p> 
+          <p class="mt-4 text-sm text-center"> Already have an account? <a href="{{ login_url }}" class="text-primary text-gradient font-weight-bold">Sign IN</a> </p> 
         </form> 
       </div> 
     </div> 

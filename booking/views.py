@@ -16,6 +16,7 @@ import datetime
 def classes_urls(request):
     return render(request, "classes.html")
 
+
 def booking_view(request):
     """  Order the data by the date closest to the current date only for dates in the future, not for dates that have passed """
 
@@ -25,6 +26,7 @@ def booking_view(request):
     booking_list = Booking.objects.filter(booking_date__gte=today).order_by('requested_date')
     
     return render(request, 'booking.html', {'classes':classes, 'booking_list': booking_list})
+
 
 def get_customer_instance(request, User):
     """ Returns customer instance if User is logged in """
@@ -37,7 +39,6 @@ def get_customer_instance(request, User):
     def classes_total():
         return Booking.class_name.filter(classstatus='Available').count()
     
-
     """ Removing the booked seats with the total available seats """
     def classes_left():
         return Booking.classes_total - Booking.seats
@@ -53,7 +54,6 @@ def check_availabilty(customer_class_name, customer_requested_date):
 
     # Return number of classes
     return classes_booked
-
 
 
 class BookingEnquiry(View):
@@ -75,8 +75,7 @@ class BookingEnquiry(View):
 
         return render(request, "booking.html",
                       {'customer_form': customer_form,
-                       'booking_form': booking_form})
-    
+                       'booking_form': booking_form})    
 
     def post(self, request, User=User, *args, **kwargs):
         # Get post data from forms

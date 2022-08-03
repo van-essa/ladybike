@@ -13,13 +13,13 @@ def index(request):
 
 def sign_up(request):
     if request.method == "POST":
-        form = CustomerForm(request.POST)
-        if customer_form.is_valid():
+        form = Customer(request.POST)
+        if form.is_valid():
             form.save()
             return redirect('home')
     else:
-        form = CustomerForm() 
-    return render(request,'signup.html', {'form': form})
+        form = Customer() 
+    return render(request, 'signup.html', {'form': form})
 
 
 def get_customer_instance(request, User):
@@ -43,4 +43,3 @@ def error_404(request, exception):
 def error_500(request):
     """ 500 error page """
     return render(request, '500.html', status=500)
-
