@@ -22,4 +22,4 @@ class BookingAdmin(admin.ModelAdmin):
     search_fields = ['class_name']
     list_filter = ('class_name', 'status')
     list_display = ('booking_id', 'class_name', 'customer', 'status',
-                    'requested_date', 'requested_time',)
+                    'requested_date',)

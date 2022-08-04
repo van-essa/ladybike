@@ -168,11 +168,11 @@ USE_L10N = True
 
 USE_TZ = True
 
-DATE_INPUT_FORMAT = ['%Y-%M-%d', ]
+DATE_INPUT_FORMAT = ['%d/%M/%Y', ]
 
-en_formats.DATE_FORMAT = 'Y-m-d'
+en_formats.DATE_FORMAT = 'd/m/Y'
 
-en_formats.DATETIME_FORMAT = 'Y-m-d'
+en_formats.DATETIME_FORMAT = 'd/m/Y'
 
 TIME_INPUT_FORMATS = ['%H:%M', ]
 
@@ -180,7 +180,7 @@ TIME_INPUT_FORMATS = ['%H:%M', ]
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'  # noqa
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -193,10 +193,10 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTHENTICATION_BACKENDS = (
-    # Needed to login by username in Django admin, regardless of `allauth` 
+    # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
-    
-    # `allauth` specific authentication methods, such as login by e-mail 
+
+    # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 

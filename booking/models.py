@@ -35,6 +35,7 @@ class Booking(models.Model):
     OPTION_STATUS = (('y', 'Yes'), ('n', 'No'), ('p', 'Pending'))
 
     class Meta:
+        """Booking Meta"""
         verbose_name_plural = 'Booking'
 
     booking_id = models.AutoField(primary_key=True)
@@ -46,7 +47,6 @@ class Booking(models.Model):
         max_length=15, choices=STATUS_CHOICES, default='Available')
     seats = models.IntegerField(default=True, null=False)
     requested_date = models.DateField()
-    requested_time = models.TimeField()
     bookingtatus = models.CharField(
         max_length=10, default='p', choices=OPTION_STATUS)
 
@@ -54,17 +54,13 @@ class Booking(models.Model):
         return str(self.class_name)
 
 
-""" Counting the amount of classes available that got booked """
-
-
 @property
 def classes_total(self):
-        return self.class_name.filter(classstatus='Available').count()
-
-
-""" Removing the booked seats with the total availbel seats """    
+    """ Counting the amount of classes available that got booked """
+    return self.class_name.filter(classstatus='Available').count()
 
 
 @property
 def classes_left(self):
-        return self.classes_total - self.seats
+    """ Removing the booked seats with the total availbel seats """
+    return self.classes_total - self.seats

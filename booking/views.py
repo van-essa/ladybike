@@ -1,15 +1,26 @@
+"""Imports"""
+import datetime
 from django.shortcuts import render, reverse, get_object_or_404
 from django.views import View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.utils.timezone import now
 from .models import ClassName, Customer, Booking
 from .forms import CustomerForm, BookingForm
-from django.utils.timezone import now
-import datetime
 
 
 # Create your views here.
+
+
+# Counting the amount of classes available that got booked
+# classes_total =  Booking.class_name.objects.filter(Booking.status=='Available').count()
+classes_total = ClassName.objects.filter(booking__status='Available').count()
+booking_seats = Booking.objects.values('seats').count()
+
+
+# Removing the booked seats with the total available seats
+classes_left = classes_total - booking_seats
 
 def classes_urls(request):
     """ Return to classes url """
@@ -27,7 +38,7 @@ def booking_view(request):
     classes = ClassName.objects.all()
     booking_list = Booking.objects.filter(
         booking_date__gte=today).order_by('requested_date')
-    
+
     return render(request, 'booking.html', {
         'classes': classes, 'booking_list': booking_list})
 
@@ -39,22 +50,14 @@ def get_customer_instance(request, User):
 
     return customer
 
-    # Counting the amount of classes available that got booked
-    def classes_total():
-        return Booking.class_name.filter(classstatus='Available').count()
-
-    # Removing the booked seats with the total available seats
-    def classes_left():
-        return Booking.classes_total - Booking.seats
-
 
 def check_availabilty(customer_class_name, customer_requested_date):
     """ Check availability against Booking model using customer input """
 
     # Check to see how many classes exist at that date
-    classes_booked = len(float(Booking.objects.filter(
+    classes_booked = len(Booking.objects.filter(
         class_name=customer_class_name,
-        requested_date=customer_requested_date, status="Available")))
+        requested_date=customer_requested_date, status="Available"))
 
     # Return number of classes
     return classes_booked
@@ -93,17 +96,17 @@ class BookingEnquiry(View):
 
             # Convert date in to format required by django
             date_formatted = datetime.datetime.strptime(
-                customer_requested_date, "%Y-%m-%d").strftime('%d-%m-%Y')
+                customer_requested_date, "%d/%m/%Y").strftime('%Y-%m-%d')
 
-            # Check to see how many bookings exist at that time/date
+            # Check to see how many bookings exist at that date
             classes_booked = check_availabilty(
-                customer_requested_date, date_formatted)
+                customer_class_name, date_formatted)
 
-            # Get the number of availble seat spot in the classes
-            available_seats = classes_left()
+            # Get the number of available seats in the classes
+            available_seats = classes_left
 
             # Compare number of bookings to number of classes available
-            if classes_booked >= Booking.seats:
+            if classes_booked >= booking_seats:
                 # If the number of classes booked is bigger
                 # than or equal to the max number of classes
                 # left in the LadyBike Gym, the form will stop
@@ -180,7 +183,7 @@ def fetch_booking(self, request, User):
         # Get any bookings using the customer instance
         get_booking = Booking.objects.filter(
             customer=current_customer_id).values().order_by('requested_date')
-            
+     
         if len(get_booking) == 0:
             # if no bookings
             return None
@@ -258,7 +261,7 @@ class EditBooking(View):
             else:
                 # Convert date to display in dd/mm/YYYY format
                 date_to_string = booking.requested_date.strftime(
-                    "%Y-%m-%d")
+                    "%d/%m/%Y")
                 booking.requested_date = date_to_string
 
                 # Get customer info
@@ -313,7 +316,7 @@ class EditBooking(View):
             customer_requested_date = request.POST.get('requested_date')
             # Convert date into format required by django
             date_formatted = datetime.datetime.strptime(
-                customer_requested_date, "%Y-%m-%d").strftime('%d-%m-%Y')
+                customer_requested_date, "%d/%m/%Y").strftime('%Y-%m-%d')
 
             # Check the amount of bookings at that date and time
             classes_booked = check_availabilty(
@@ -323,9 +326,9 @@ class EditBooking(View):
             available_seats = classes_left()
 
             # Compare number of bookings to number of classes available
-            if classes_booked >= Booking.seats:
-                """ if the amount of classes already booked is equal to \
-                the max tables then stop form from submitting. """
+            if classes_booked >= booking_seats:
+                # if the amount of classes already booked is equal to
+                # the max tables then stop form from submitting
                 messages.add_message(
                     request, messages.ERROR,
                     "Unfortunately," f"{customer_class_name} " "is fully booked on "
@@ -400,7 +403,7 @@ class DeleteBooking(View):
                                    'booking': booking,
                                    'booking_id': booking_id})
         else:
-            """Prevent users from accessing this page if not logged in""" 
+            # Prevent users from accessing this page if not logged in
             messages.add_message(
                 request, messages.ERROR, "You must be logged in to "
                 "manage your bookings.")
