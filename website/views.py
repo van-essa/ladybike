@@ -1,9 +1,6 @@
+"""Imports"""
 from django.shortcuts import render, redirect
-from django.views import View
-from django.contrib.auth.models import User
-from django.conf import settings
 from booking.models import Customer
-from django import forms
 
 
 # Create your views here.

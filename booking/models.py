@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 
 # Create your models here.
@@ -45,22 +46,13 @@ class Booking(models.Model):
         'ClassName', on_delete=models.CASCADE, default=True)
     status = models.CharField(
         max_length=15, choices=STATUS_CHOICES, default='Available')
-    seats = models.IntegerField(default=True, null=False)
+    seats = models.IntegerField(default=True, null=False, validators=[
+            MaxValueValidator(10),
+            MinValueValidator(1)
+        ])
     requested_date = models.DateField()
     bookingtatus = models.CharField(
         max_length=10, default='p', choices=OPTION_STATUS)
 
     def __str__(self):
         return str(self.class_name)
-
-
-@property
-def classes_total(self):
-    """ Counting the amount of classes available that got booked """
-    return self.class_name.filter(classstatus='Available').count()
-
-
-@property
-def classes_left(self):
-    """ Removing the booked seats with the total availbel seats """
-    return self.classes_total - self.seats

@@ -14,13 +14,13 @@ from .forms import CustomerForm, BookingForm
 
 
 # Counting the amount of classes available that got booked
-# classes_total =  Booking.class_name.objects.filter(Booking.status=='Available').count()
 classes_total = ClassName.objects.filter(booking__status='Available').count()
 booking_seats = Booking.objects.values('seats').count()
 
 
 # Removing the booked seats with the total available seats
 classes_left = classes_total - booking_seats
+
 
 def classes_urls(request):
     """ Return to classes url """
@@ -80,7 +80,7 @@ class BookingEnquiry(View):
             customer_form = CustomerForm()
             booking_form = BookingForm()
 
-        return render(request, "booking.html",
+        return render(request, 'booking.html',
                       {'customer_form': customer_form, 'booking_form': booking_form}) 
 
     def post(self, request, User=User, *args, **kwargs):
@@ -101,9 +101,6 @@ class BookingEnquiry(View):
             # Check to see how many bookings exist at that date
             classes_booked = check_availabilty(
                 customer_class_name, date_formatted)
-
-            # Get the number of available seats in the classes
-            available_seats = classes_left
 
             # Compare number of bookings to number of classes available
             if classes_booked >= booking_seats:
@@ -321,9 +318,6 @@ class EditBooking(View):
             # Check the amount of bookings at that date and time
             classes_booked = check_availabilty(
                 customer_requested_date, date_formatted)
-
-            # Get the number of availble seat spot in the classes
-            available_seats = classes_left()
 
             # Compare number of bookings to number of classes available
             if classes_booked >= booking_seats:

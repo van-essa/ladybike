@@ -1,6 +1,6 @@
-from booking import views
+"""Imports"""
 from django.urls import path
-from . import views
+from booking import views
 
 
 urlpatterns = [
