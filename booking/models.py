@@ -37,7 +37,7 @@ class Booking(models.Model):
 
     class Meta:
         """Booking Meta"""
-        verbose_name_plural = 'Booking'
+        verbose_name_plural = 'Bookings'
 
     booking_id = models.AutoField(primary_key=True)
     customer = models.ForeignKey(
