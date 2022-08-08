@@ -5,7 +5,8 @@
 <div class="container-fluid">
     <div class="row d-flex justify-content-center">
         <div class="col-12 col-sm-8 col-md-6 col-lg-4 text-center mb-3">
-            <h2 class="text-center mt-2 mb-3">Cancel your booking</h2>
+            <h2 class="text-center mt-2 mb-3">Cancel your booking with <span class="brand">Lady<span class="fuxia-lady"><span
+                class="fuxia-thin">|Bike</span></span></span></h2>
         </div>
     </div>
 
@@ -19,8 +20,6 @@
                 <h5>Booking ID: {{ booking.booking_id }} </h5>
                 </li>
                 <li class="booking-item">Class: {{ booking.class_name }} </li>
-                <li class="booking-item">Time: {{ booking.requested_time }} </li>
-                <li class="booking-item">Time: {{ booking.requested_time }} </li>
                 <li class="booking-item">Date: {{ booking.requested_date|date:"d/m/Y" }} </li>
 
                 <!-- Button to open modal -->

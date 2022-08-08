@@ -19,7 +19,7 @@
           <h1 class="text-white">Welcome to <span><strong style="color: #d606ba;">Ladybike</strong></span></h1>
           <p class="lead mb-4 text-white opacity-8 display-6">We’re passionate female cycling professionals who want to make cycling training a fun experience for other females!</p>
           <h4 class="text-white mb-3">Book a session today, and we'll ensure you have a great sweaty experience!</h4>
-          <button type="submit" class="btn bg-white font-weight-bold" style="color: #d606ba; font-weight: 800;"><a href="{% url 'booking' %}" style="color: #d606ba;">Book Now!</a></button>
+          <button type="submit" class="btn-lg bg-white font-weight-bold" style="color: #d606ba; font-weight: 800;"><a href="{% url 'booking' %}" style="color: #d606ba;">Book Now!</a></button>
         </div>
       </div>
     </div>
@@ -34,44 +34,46 @@
           <div class="row gy-5">
           </div>
           <div class="d-flex flex-row bd-highlight mb-3 justify-content-center">
+            <div cals="row">
   
   
-              <div class="col-md-6 col-lg-3 px-4 d-flex align-items-stretch mb-5 mb-lg-0 aos-init aos-animate justify-content-center"
+              <div class="col-md-8 offset-md-2 mb-5 mb-lg-0 aos-init aos-animate justify-content-center"
               style="text-align:center" data-aos="fade-up">
                   <div class="icon-box">
                       <div class="icon mb-3"><img src="{% static 'images/Strong_girl.png' %}" alt="Strong_girl">
                       </div>
-                      <h5 class="title">Become <span><strong style="color: #d606ba;">Stronger</strong></span></h5>
-                      <p>LadyBike encourages you to get a better cyclist week by week! You progress gradually, increasing the
-                        intensity in each workout.</p>
+                      <h1 class="title">Become <span><strong style="color: #d606ba;">Stronger</strong></span></h1>
+                      <h4>LadyBike encourages you to get a better cyclist week by week! You progress gradually, increasing the
+                        intensity in each workout.</h4>
                   </div>
               </div>
            
   
-              <div class="col-md-6 col-lg-3 px-4 d-flex align-items-stretch mb-5 mb-lg-0 aos-init aos-animate justify-content-center"
+              <div class="col-md-8 offset-md-2 mb-5 mb-lg-0 aos-init aos-animate justify-content-center"
               style="text-align:center" data-aos="fade-up" data-aos-delay="100">
                   <div class="icon-box">
                       <div class="icon mb-3"><img src="{% static 'images/Community.png' %}" alt="Community">
                       </div>
-                      <h5 class="title">Join Our <span><strong style="color: #d606ba;">Community</strong></span></h5>
-                      <p>LadyBike has a great community of women interested in Cycling. Connect with like-minded people and 
-                        share your experiences and aspirations!</p>
+                      <h1 class="title">Join Our <span><strong style="color: #d606ba;">Community</strong></span></h1>
+                      <h4>LadyBike has a great community of women interested in Cycling. Connect with like-minded people and 
+                        share your experiences and aspirations!</h4>
                   </div>
               </div>
   
   
-              <div class="col-md-6 col-lg-3 px-4 d-flex align-items-stretch mb-5 mb-lg-0 aos-init aos-animate justify-content-center"
+              <div class="col-md-8 offset-md-2 mb-5 mb-lg-0 aos-init aos-animate justify-content-center"
               style="text-align:center" data-aos="fade-up" data-aos-delay="200">
                   <div class="icon-box">
                       <div class="icon mb-3"><img src="{% static 'images/Cyclist.png' %}"  alt="Cyclist">
                       </div>
-                      <h5 class="title">Only For <span><strong style="color: #d606ba;">Women</strong></span></h5>
-                      <p>LadyBike offers three cycling indoor workouts ONLY for women! LadyBike is a place for women who are focused on their health and fitness and 
-                        want to become better cyclists.</p>
+                      <h1 class="title">Only For <span><strong style="color: #d606ba;">Women</strong></span></h1>
+                      <h4>LadyBike offers three cycling indoor workouts ONLY for women! LadyBike is a place for women who are focused on their health and fitness and 
+                        want to become better cyclists.</h4>
                   </div>
               </div>
           </div>
       </div>
+    </div>
   
         <div class="container">
           <div class="row align-items-center">
@@ -80,13 +82,13 @@
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                 </div>
                 <div class="card-body text-center">
-                  <h4 class="font-weight-normal" style="color: #d606ba;">
+                  <h3 class="font-weight-normal" style="color: #d606ba;">
                     Articles
-                  </h4>
-                  <p class="mb-0">
+                  </h3>
+                  <h5 class="mb-0">
                     Our articles provide great content to inspire you to follow a healthy lifestyle.
-                  </p>
-                  <a class="btn bg-gradient-info btn-sm mb-0 mt-3" style="background-color: #d606ba;" href="articles.html"><button type="button" >Find out more</button>
+                  </h5>
+                  <a class="btn bg-gradient-info btn-sm mb-0 mt-3" style="background-color: #d606ba;" href="articles.html"><button type="button" ><h5>Find out more</h5></button>
                 </a>
                 </div>
               </div>
@@ -95,12 +97,12 @@
         </div>
       </section>
 
-
-      
-
 <!-- END Section with four info areas left & one card right with image and waves -->
     <!-- -------- START Feature with pattern background  -------- -->
     <section class="pb-5 position-relative bg-gradient-dark mx-n3">
+      <h3 class="col-md-8 offset-md-2 text-center" style="color: #ffff;">
+        Meet Our Trainers
+      </h3>
       
         <div class="container">
           <div class="row justify-content-center">
@@ -111,12 +113,12 @@
                       <img class="rounded-circle mx-auto d-inline-block shadow-sm" src="{% static 'images/Vanessa.png' %}" alt="vanessa">
                     </div>
                   <div class="card-text pt-1">
-                    <h5 class="member-name mb-0 text-center font-weight-bold" style="color:#d606ba;">Vanessa Karra</h5>
-                    <div class="mb-3 text-center">Co-founder / Personal Trainer</div>
-                    <div>I’m Vanessa, personal trainer and co-founder of LadyBike. I gained my qualifications in 
+                    <h4 class="member-name mb-0 text-center font-weight-bold" style="color:#d606ba;">Vanessa Karra</h4>
+                    <div class="mb-3 text-center"><h6>Co-founder / Personal Trainer</h6></div>
+                    <div><h5>I’m Vanessa, personal trainer and co-founder of LadyBike. I gained my qualifications in 
                       2008 and started my career as a personal and cycling trainer for women. My goal has always been to 
                       empower women by giving them the practical tools they need to improve their health, cycling skills and 
-                      fitness and feel more confident. You can find me on the LadyBike classes!</div>
+                      fitness and feel more confident. You can find me on the LadyBike classes!</h5></div>
                   </div>
                 </div><!--//card-body-->
                 <div class="card-footer theme-bg-primary border-0 text-center">
@@ -131,13 +133,13 @@
                       <img class="rounded-circle mx-auto d-inline-block shadow-sm" src="{% static 'images/Emma.png' %}" alt="Emma">
                     </div>
                   <div class="card-text pt-1">
-                    <h5 class="member-name mb-0 text-center font-weight-bold" style="color:#d606ba;">Emma Thomas</h5>
-                    <div class="mb-3 text-center">Olympic Cyclist / Personal Trainer</div>
-                    <div>Hello! I’m Emma — wife, mother and an Olympic Cyclist. 
+                    <h4 class="member-name mb-0 text-center font-weight-bold" style="color:#d606ba;">Emma Thomas</h4>
+                    <div class="mb-3 text-center"><h6>Olympic Cyclist / Personal Trainer</h6></div>
+                    <div><h5>Hello! I’m Emma — wife, mother and an Olympic Cyclist. 
                       After having my baby, Alexandra, I decided to take a break from competitions and  
                       focus more on sharing my experience, passion for cycling, and healthy lifestyle with other women. 
                       I love what I do and what better to share it with you?
-                      You can find me on the Ride that hill and Spinning classes!</div>
+                      You can find me on the Ride that hill and Spinning classes!</h5></div>
                   </div>
                 </div><!--//card-body-->
                 <div class="card-footer theme-bg-primary border-0 text-center">

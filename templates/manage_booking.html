@@ -13,14 +13,11 @@
 <div class="container-fluid">
     <div class="row d-flex justify-content-center">
         <div class="col-sm-8 text-center">
-            <h2 class=" mt-2 mb-3">Manage your bookings</h2>
+            <h2 class=" mt-2 mb-3">Manage your bookings with <span class="brand">Lady<span class="fuxia-lady"><span
+                class="fuxia-thin">|Bike</span></span></span></h2>
             <!-- Let the user get all the info to ensure that their are using the right credentials -->
-            <p class="mt-2">Hello, <strong>{{ Customer.full_name }}</strong>!<br>
-                Here you'll find the classes booked with this email adress: 
-                <strong>{{ Customer.email }}</strong></p>
+            <p class="mt-2">Hello, there!</strong>!</p>
             <p class="mt-2">You can make changes to your bookings by using the options below.</p>
-            <p class="mt-2 mb-4">If you make any changes, your booking status will change to 'pending' as we need
-                to ensure that the class is available.</p>
         </div>
     </div>
 
@@ -45,9 +42,11 @@
                             {% else %}
                             <div class="text-center">
                                 <a href="{% url 'edit_booking' booking.booking_id %}"
-                                    class="button submit-button inline-btn">Edit Booking</a>
+                                    class="button submit-button inline-btn" style="background-color: #d606ba;
+                                    color: white;">Edit Booking</a>
                                 <a href="{% url 'delete_booking' booking.booking_id %}"
-                                    class="button cancel-button inline-btn">Cancel Booking</a>
+                                    class="button cancel-button inline-btn" style="background-color: lightgray;
+                                    color: #d606ba;">Cancel Booking</a>
                             </div>
                             {% endif %}
                             <hr>
