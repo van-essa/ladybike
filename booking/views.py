@@ -4,13 +4,25 @@ from django.shortcuts import render, reverse, get_object_or_404
 from django.views import View
 from django.http import HttpResponseRedirect
 from django.contrib import messages
-from django.contrib.auth.models import User
 from django.utils.timezone import now
+from django.views.generic import ListView
 from .models import ClassName, Customer, Booking
 from .forms import CustomerForm, BookingForm
 
 
 # Create your views here.
+
+class BookingList(ListView):
+    """To define the class-based view, a class called BookingList
+    that inherits from ListView is created."""
+    model = Booking
+    paginate_by = 10
+
+    def get_queryset(self):
+        queryset = ListView.get_queryset(self)
+        queryset = queryset.filter(user=self.request.user).order_by(
+            '-updated_datetime', 'status')
+        return queryset
 
 
 # Counting the amount of classes available that got booked
@@ -43,7 +55,7 @@ def booking_view(request):
         'classes': classes, 'booking_list': booking_list})
 
 
-def get_customer_instance(request, User):
+def get_customer_instance(request):
     """ Returns customer instance if User is logged in """
     customer_email = request.user.email
     customer = Customer.objects.filter(email=customer_email).first()
@@ -65,28 +77,30 @@ def check_availabilty(customer_class_name, customer_requested_date):
 
 class BookingEnquiry(View):
     """ Booking view allows users to make class enquiries """
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
+        """Receive booking form"""
 
         if request.user.is_authenticated:
-            customer = get_customer_instance(request, User)
-            if customer is None:
-                email = request.user.email
-                customer_form = CustomerForm(initial={'email': email})
-            else:
-                customer_form = CustomerForm(instance=customer)
-            booking_form = BookingForm()
-
-        else:
             customer_form = CustomerForm()
             booking_form = BookingForm()
+            return render(
+                    request,
+                    'booking.html',
+                    {'customer_form': customer_form, 'booking_form': booking_form}
+                    )
+        else:
+            messages.add_message(
+                request, messages.ERROR, "You must be logged in to "
+                "make bookings.")
 
-        return render(request, 'booking.html',
-                      {'customer_form': customer_form, 'booking_form': booking_form}) 
+            url = reverse('booking')
+            return HttpResponseRedirect(url)
 
-    def post(self, request, User=User, *args, **kwargs):
-        # Get post data from forms
-        customer_form = CustomerForm(data=request.POST)
-        booking_form = BookingForm(data=request.POST)
+    def post(self, request):
+        """ Get post data from forms """
+        if request.user.is_authenticated:
+            customer_form = CustomerForm(data=request.POST)
+            booking_form = BookingForm(data=request.POST)
 
         if customer_form.is_valid() and booking_form.is_valid():
             # Fetch information from forms
@@ -103,7 +117,7 @@ class BookingEnquiry(View):
                 customer_class_name, date_formatted)
 
             # Compare number of bookings to number of classes available
-            if classes_booked >= booking_seats:
+            if classes_booked > booking_seats:
                 # If the number of classes booked is bigger
                 # than or equal to the max number of classes
                 # left in the LadyBike Gym, the form will stop
@@ -166,7 +180,7 @@ class BookingEnquiry(View):
                        'booking_form': booking_form})
 
 
-def fetch_booking(self, request, User):
+def fetch_booking(request):
     """ Get any existing bookings for the customer in the
     Booking model. If there are no bookings then redirect
     customer to Booking page.
@@ -180,7 +194,7 @@ def fetch_booking(self, request, User):
         # Get any bookings using the customer instance
         get_booking = Booking.objects.filter(
             customer=current_customer_id).values().order_by('requested_date')
-     
+
         if len(get_booking) == 0:
             # if no bookings
             return None
@@ -191,7 +205,8 @@ def fetch_booking(self, request, User):
         return None
 
 
-def validate_date(self, request, booking):
+def validate_date(booking):
+    """Validate booking date"""
     today = datetime.datetime.now().date()
     for bookings in booking:
         if bookings['requested_date'] < today:
@@ -202,10 +217,10 @@ def validate_date(self, request, booking):
 
 class ManageBooking(View):
     """ View for user to manage any existing bookings """
-    def get(self, request, User=User, *args, **kwargs):
+    def get(self, request):
+        """Receive manage booking form"""
         if request.user.is_authenticated:
-            customer = get_customer_instance(request, User)
-            current_booking = fetch_booking(self, request, User)
+            current_booking = fetch_booking(request)
 
             # If the user has no bookings or does not exist as a 'customer'
             if current_booking is None:
@@ -217,11 +232,10 @@ class ManageBooking(View):
                 return HttpResponseRedirect(url)
 
             else:
-                validate_date(self, request, current_booking)
+                validate_date(current_booking)
                 return render(
                     request, 'manage_booking.html',
-                    {'booking': current_booking,
-                     'customer': customer})
+                    {'booking': current_booking})
 
         else:
             # Prevent users accessing this page if they are not logged in
@@ -235,7 +249,8 @@ class ManageBooking(View):
 
 class EditBooking(View):
     """ The view for user to be able to edit their existing bookings """
-    def get(self, request, booking_id, User=User, *args, **kwargs):
+    def get(self, request, booking_id):
+        """Receive lesson edit form"""
         if request.user.is_authenticated:
             # Get booking object based on id
             booking = get_object_or_404(
@@ -260,9 +275,6 @@ class EditBooking(View):
                 date_to_string = booking.requested_date.strftime(
                     "%d/%m/%Y")
                 booking.requested_date = date_to_string
-
-                # Get customer info
-                customer = get_customer_instance(request, User)
 
                 # Compare names of booking owner and user
                 booking_owner = booking.customer
@@ -297,16 +309,15 @@ class EditBooking(View):
             url = reverse('booking')
             return HttpResponseRedirect(url)
 
-    def post(self, request, booking_id, User=User, *args, **kwargs):
-        customer = get_customer_instance(request, User)
-        # get booking from database
-        booking_id = booking_id
-        booking = get_object_or_404(
-            Booking, booking_id=booking_id)
-
-        booking_form = BookingForm(
-            data=request.POST, instance=booking)
-        customer_form = CustomerForm(instance=customer)
+    def post(self, request, booking_id, *args, **kwargs):
+        if request.user.is_authenticated:
+            # get booking from database
+            booking_id = booking_id
+            booking = get_object_or_404(
+                Booking, booking_id=booking_id)        
+            booking_form = BookingForm(
+                data=request.POST, instance=booking)
+            customer_form = CustomerForm(instance=customer)
 
         if booking_form.is_valid():
             # get the post information from the form
@@ -342,9 +353,8 @@ class EditBooking(View):
                                      f"Booking {booking_id} has now"
                                      " been updated.")
                 # Fetch new list of bookings to display
-                current_booking = fetch_booking(
-                    self, request, User)
-                validate_date(self, request, current_booking)
+                current_booking = fetch_booking(request)
+                validate_date(current_booking)
                 # Return user to manage booking page
                 return render(request, 'manage_booking.html',
                               {'booking': current_booking})
@@ -365,11 +375,11 @@ class EditBooking(View):
 
 class DeleteBooking(View):
     """ View for user to delete bookings """
-    def get(self, request, booking_id, User=User, *args, **kwargs):
+    def get(self, request, booking_id):
+        """ Recieve delete booking """
         if request.user.is_authenticated:
             booking = get_object_or_404(
                 Booking, booking_id=booking_id)
-            customer = get_customer_instance(request, User)
             # Prevent customers editing outdated bookings
             today = datetime.datetime.now().date()
             if booking.requested_date < today:
@@ -393,8 +403,7 @@ class DeleteBooking(View):
 
                 else:
                     return render(request, 'delete_booking.html',
-                                  {'customer': customer,
-                                   'booking': booking,
+                                  {'booking': booking,
                                    'booking_id': booking_id})
         else:
             # Prevent users from accessing this page if not logged in
@@ -405,18 +414,18 @@ class DeleteBooking(View):
             url = reverse('booking')
             return HttpResponseRedirect(url)
 
-    def post(self, request, booking_id, User=User, *args, **kwargs):
-        # get booking from database
-        booking_id = booking_id
-        booking = Booking.objects.get(pk=booking_id)
-        # Delete the booking
-        booking.delete()
-        messages.add_message(request, messages.SUCCESS,
-                             f"Booking {booking_id} has now "
-                             "been cancelled.")
+    def post(self, request, booking_id):
+        """ Get booking from database """
+        if request.user.is_authenticated:
+            booking_id = booking_id
+            booking = Booking.objects.get(pk=booking_id)
+            # Delete the booking
+            booking.delete()
+            messages.add_message(request, messages.SUCCESS, f"Booking {booking_id} has" "\
+                now been cancelled.")
         # Get updated list of bookings
-        current_booking = fetch_booking(self, request, User)
+        current_booking = fetch_booking(self, request)
         # Return user to manage booking page
-        validate_date(self, request, current_booking)
+        validate_date(current_booking)
         return render(request, 'manage_booking.html',
                       {'booking': current_booking})

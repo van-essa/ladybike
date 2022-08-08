@@ -15,13 +15,13 @@ def sign_up(request):
         form = Customer(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return render(request, 'index.html')
     else:
-        form = Customer() 
-    return render(request, 'signup.html', {'form': form})
+        form = Customer()
+        return render(request, 'signup.html', {'form': form})
 
 
-def get_customer_instance(request, User):
+def get_customer_instance(request):
     """ Returns customer instance if User is logged in """
     customer_email = request.user.email
     customer = Customer.objects.filter(email=customer_email).first()
