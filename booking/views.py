@@ -235,7 +235,7 @@ class ManageBooking(View):
 
 class EditBooking(View):
     """ The view for user to be able to edit their existing bookings """
-    def get(self, request, booking_id, User=User, *args, **kwargs):
+    def get(self, request, booking_id, *args, **kwargs):
         """Receive lesson edit form"""
         if request.user.is_authenticated:
             # Get booking object based on id
@@ -298,7 +298,7 @@ class EditBooking(View):
             url = reverse('booking')
             return HttpResponseRedirect(url)
 
-    def post(self, request, booking_id, User=User, *args, **kwargs):
+    def post(self, request, booking_id, *args, **kwargs):
         customer = get_customer_instance(request, User)
         if request.user.is_authenticated:
             # get booking from database

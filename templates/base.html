@@ -49,13 +49,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item" style="font-size: 1.1rem;">
+                    <li class="nav-item" style="font-size: 1.5rem;">
                         <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
                     </li>
-                    <li class="nav-item" style="font-size: 1.1rem;">
+                    <li class="nav-item" style="font-size: 1.5rem;">
                         <a class="nav-link active" aria-current="page" href="{% url 'articles' %}">Articles</a>
                     </li>
-                    <li class="nav-item" style="font-size: 1.1rem;">
+                    <li class="nav-item" style="font-size: 1.5rem;">
                         <a class="nav-link active" aria-current="page" href="/classes">Classes</a>
                     </li>
                 </ul>
@@ -65,13 +65,13 @@
 
                         <li class="nav-item fuxia-bground ml-auto">
                         <a class="nav-link {% if request.resolver_match.url_name == 'manage_booking' %}
-                        black-text {% else %} text-white {% endif %}" href="{% url 'manage_booking' %}">Manage
+                        black-text {% else %} text-white {% endif %}" style="font-size: 1.3rem;" href="{% url 'manage_booking' %}">Manage
                             Bookings</a>
                         </li>
                         
                         <li class="nav-item fuxia-bground ml-auto">
                         <a class="nav-link {% if request.resolver_match.url_name == 'account_logout' %}
-                        black-text {% else %} text-white {% endif %}" href="{% url 'account_logout' %}">Logout</a>
+                        black-text {% else %} text-white {% endif %}"  style="font-size: 1.3rem;" href="{% url 'account_logout' %}">Logout</a>
                         </li>
 
                         <!-- If user is not logged in display Register & Login -->
@@ -79,12 +79,12 @@
 
                         <li class="nav-item fuxia-bground ml-auto">
                         <a class="nav-link {% if request.resolver_match.url_name == 'account_signup' %}
-                        black-text {% else %} text-white {% endif %}" href="{% url 'account_signup' %}">Register</a>
+                        black-text {% else %} text-white {% endif %}" style="font-size: 1.3rem;" href="{% url 'account_signup' %}">Register</a>
                         </li>
                         
                         <li class="nav-item fuxia-bground ml-auto">
                         <a class="nav-link {% if request.resolver_match.url_name == 'account_login' %}
-                        black-text {% else %} text-white {% endif %}" href="{% url 'account_login' %}">Login</a>
+                        black-text {% else %} text-white {% endif %}" style="font-size: 1.3rem;" href="{% url 'account_login' %}">Login</a>
                         </li>
                     {% endif %}
                 </ul>
