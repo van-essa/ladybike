@@ -4,6 +4,13 @@ LadyBike is a cycling booking platform only for women. It provides three biking 
 
 Users can log in with their credentials to make a booking and like the articles. 
 
+###Strategy
+Using the core UX principles in design thinking a pesona profile was created by using Code Institutes template and you can find it [HERE](README_docs/UX/Design_Thinking_Persona_template_Project4_Ladybike.pdf)
+
+This website will offer all of these things listed in the Persona template whilst also allowing for intuitive navigation and comfortability of use.
+
+Due to the age group of female users, it is assumed that most users will be viewing the site on their mobile phones; therefore, creating something responsive is integral to the design. Thus, Bootstrap grids and elements & custom CSS have been used to allow this.
+
 ## Purpose
 
 The app is designed as a booking application that encourages the users to make a booking.
@@ -51,3 +58,40 @@ The app is designed as a booking application that encourages the users to make a
 ![Screenshot of the canban board](README_docs/Kanbar_board/kanban.png)
 
 Github issues were used to create the User stories and group them according to MoSCoW prioritization technique. Link to the project with live issues can be found [here](https://github.com/van-essa/ladybike/projects/1). The issues are currently in two categories - done or for the next release.
+
+## Scope
+In order to achieve the desired user & business goals, the following features will be included in this release:
+
+- Responsive navbar that will navigate to the various pages throughout the site
+- Landing page with brief information about the cycling platform and links to the booking page
+-Articles page, with cycling, healthy food and lifestyle content
+-Article detail page, where logged-in users can like the article
+- Classes page, with links to booking
+- Booking page, with a booking form to enquire with the cycling gym
+- Manage booking page, where logged-in users can edit/delete existing bookings they have
+- Register/login feature using Django allauth
+
+## Structure
+This website has been designed with simplicity in mind, and each page only has vital information so the user can find what they want quickly without having to read through unnecessary things. Each key feature has been separated to highlight its functionality to the user.
+
+The website is made of three apps:
+
+1. Website - Core functionality
+2. Articles - Articles display
+3. Booking - Booking enquiries
+
+### Databases
+
+The articles and booking app required databases to store information, so four custom models have been created.
+
+#### Articles
+Post is the model name for the Articles app, a standalone model that provide all of the information required to display the article's content as part of the cycling platform. Each article has a title, slug, author, featured image, excerpt, date, content and likes.
+
+#### Booking
+There are three models in this app, Customer, ClassName & Booking. Combining these three models allows for customer details to be stored, booking enquiries to be made & managed & also enables availability checks whilst the user is enquiring. 
+
+For each booking, there will be a customer & class name assigned to it. They are assigned during the enquiry process. This works for users that are logged in. Logged-in users will have their details associated with the user email address as this is how they are located in the customer model.
+
+The classes model is also used to determine the classes' availability. This logic prevents bookings from being made if no classes are available at the specified date and time.
+
+Entity Relationship Diagram below to see how the models relate to each other:
