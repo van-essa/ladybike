@@ -57,7 +57,7 @@ The app is designed as a booking application that encourages the users to make a
 
 ![Screenshot of the canban board](README_docs/Kanbar_board/kanban.png)
 
-Github issues were used to create the User stories and group them according to MoSCoW prioritization technique. Link to the project with live issues can be found [here](https://github.com/van-essa/ladybike/projects/1). The issues are currently in two categories - done or for the next release.
+Github issues were used to create the User stories and group them according to MoSCoW prioritization technique. Link to the project with live issues can be found [HERE](https://github.com/van-essa/ladybike/projects/1). The issues are currently in two categories - done or for the next release.
 
 ## Scope
 In order to achieve the desired user & business goals, the following features will be included in this release:
@@ -95,3 +95,101 @@ For each booking, there will be a customer & class name assigned to it. They are
 The classes model is also used to determine the classes' availability. This logic prevents bookings from being made if no classes are available at the specified date and time.
 
 Entity Relationship Diagram below to see how the models relate to each other:
+
+![Database Schemas can be found here](README_docs/Database/Database_LadyBike.png)
+
+### Skeleton
+[Wireframes can be viewed here](README_docs/Wireframes/LadyBike_Wireframes.pdf)
+
+Please note that the actual website differs slightly from the original wireframes. 
+
+The theme of simplicity follows through to the design, where bootstrap columns and rows have been used. The aim was to divide the pages to keep the same layout throughout so the user could feel more easily on the various pages.
+
+### Surface
+The colour palette chosen for this website was fuchsia, grey and white. The colour palette aimed to create a playful and firm feel. Based on fuchsia colours, LadyBike kept the feeling of a robust virtual environment, while white kept the minimal and clean design. An essential mix to share is that this is a female cycling platform. Grey colour also comes in to break the monotony of only the two colours. 
+
+![Colour Palette](README_docs/Wireframes/LadyBike_Palette.png)
+
+The fonts chosen for this project are 'Lora' & 'SansSerif', beautifully clean and clear fonts for the headings and the available content as it is easier to read for the user. When LadyBike was referred to, `brand-text` was used for most instances.
+
+---
+
+## Features
+
+### Home page
+**Navigation bar**: The navigation bar has links to all the active pages for the user and is clearly labelled, the classes option has its page called Our Classes providing information for each of them, and a link to take the user to the Booking system. The Articles are also included in the navbar, where the user can look at the content and read in detail the article they want.
+
+If the user is logged in, then the right side of the menu shows links for pages that only authorised users can visit & use; they are: 'Manage Reservations' & 'Logout'. Otherwise, the user will be given the option to 'Register' or 'Login'. This change in the menu ensures users are directed to pages they can use, preventing any frustration and prompting them to sign up for an account. Furthermore, it makes it abundantly clear what the logged-in status is to the user.
+
+![](README_docs/Features/navbarBig.png)
+
+The navigation bar is fully responsive and collapses on mobile screens to a hamburger icon, this easily allows the user to continue to use the navigation links without the need to press back on the browser. 
+
+![](README_docs/Features/navbarMobile.png)
+
+
+**Home**: The user gets the information on the home page to understand that this is a cycling booking platform only for women. Then the trainers' profile is followed to provide a professional background. The front page aims to create a welcoming atmosphere for the user and a clear message to the target audience. Also a link to book a class is provided on the header of the page.
+
+![](README_docs/Features/home.png)
+
+![](README_docs/Features/home2.png)
+
+![](README_docs/Features/home3.png)
+
+**Footer**: The footer displays the name of the project creator and her social links.
+
+![](README_docs/Features/footer.png)
+
+### Articles
+**Articles**: The user can look at six articles per page and click on the one they want to read. If the user is logged in, they can like the article.
+
+![](README_docs/Features/articles.png)
+
+![](README_docs/Features/likepost.png)
+
+### Classes
+**Our Classes**: On the 'Our Classes' page, the user can learn more about each class and click on the call to action 'Book' to link to the booking system and book the class they want.
+
+![](README_docs/Features/ourclasses.png)
+
+![](README_docs/Features/classes.png)
+
+The user can also look at Ladybike's address and contact info for customer support.
+
+![](README_docs/Features/findus.png)
+
+### Booking
+**Booking form**: This page consists of the customer & booking model forms; they are displayed together to appear as one to make it simple for the user.
+
+In order to make a booking, the user must either register or log in.
+
+![](README_docs/Features/signin.png)
+
+![](README_docs/Features/signup.png)
+
+![](README_docs/Features/booking.png)
+
+Alos, noteworthy to mention that the user can logout whnenever they want.
+
+![](README_docs/Features/signout.png)
+
+
+**Manage Booking**: Logged-in users can view the 'manage bookings' page; they are shown any booking enquiries on this page. The aim was to show only the bookings made by the user, but it did not manage to solve this bug issue. Thus all the bookings created are displayed.
+
+The booking ID is displayed at the top of the booking item so they can be easily identified.
+
+There are also edit & delete buttons; users can edit or delete existing bookings they have created that are either 'approved' or 'pending'. 
+
+![](README_docs/Features/manage_booking.png)
+
+Bookings with a date in the past would not be displayed, so the user would not be able to edit or delete them, which could confuse the user and the admin user. Reservations with a 'rejected' status can also not be changed for the same reasons. 
+
+**Edit Booking**: This page displays the booking form pre-populated using the booking instance; the user can change the class and the date in the form. After resubmitting, the user is redirected to the 'Manage booking' page, and a success message is displayed showing which booking was edited. 
+
+![](README_docs/Features/edit_booking.png)
+
+**Delete Booking**: This page displays the booking selected with all of its information, the user presses 'Cancel Booking', and a modal pop is up for the user to confirm the cancellation, explaining that this cannot be undone. If the user chooses 'Cancel', the booking will be deleted from the model. After confirming, the user is redirected to the 'Manage Bookings' page, and a success message shows which reservation was edited.
+
+![](README_docs/Features/cancel_booking.png)
+
+![](README_docs/Features/cancel_2.png)
