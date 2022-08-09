@@ -124,7 +124,7 @@ WSGI_APPLICATION = 'ladybike.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if os.environ.get("DEVELOPMENT") == "True":
+if "DEVELOPMENT" in os.environ:
     # Testing database
     DATABASES = {
         'default': {
