@@ -216,13 +216,40 @@ Several technologies have been used to enable this design to work:
 |  [Unicorn Revealer](https://chrome.google.com/webstore/detail/unicorn-revealer/lmlkphhdlngaicolpmaakfmhplagoaln?hl=en-GB) | Used to detect overflow of elements, which allowed me to quickly debug any issues. |
 |  [Coloors](https://coolors.co/) | Used to create a colour palette for the design. |
 |  [Cloudinary](https://cloudinary.com/) | Used to store all of my static files and images. |
-|  [Color Contrast Validator](https://color.a11y.com/) | Used to test the colour contrast accessibility of the website. |
 |  [W3C Markup Validation Service](https://validator.w3.org/) | Used to validate all HTML code written and used in this website. |
 |  [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input) | Used to validate all CSS code written and used in this website. |
 |  [JSHint](https://jshint.com/) | Used to validate JS code written and used in this website. |
 |  [Freeformatter CSS Beautify](https://www.freeformatter.com/css-beautifier.html) | Used to accurately format the CSS code. |
 |  [Freeformatter HTML Formatter](https://www.freeformatter.com/html-formatter.html) | Used to accurately format the HTML code. |
-|  [AmIResponsive](http://ami.responsivedesign.is/) | Used to generate responsive image used in README file. |
-|  [Wave](https://wave.webaim.org/) | Used to test the accessibility of the website. |
+|  [Techsini](https://techsini.com/) | Used to generate responsive image used in README file. |
+|  [Lighthouse](https://web.dev/measure/?gclid=Cj0KCQjwrs2XBhDjARIsAHVymmRXL8fiu8EoDLD_EPvDwuEmmeW-QbKgjm808ohCKPRL0tVnRJV4sMEaAkSUEALw_wcB) | Used to test the accessibility of the website. |
 |  [Animate](https://animate.style/) | Used to animate forms. |
 |  [PostgreSQL](https://www.postgresql.org/) | Used to animate forms. | Two Heroku PostgresSQL were created. One for Testing usage and the other for storing the data for the models. |
+
+---
+## Testing
+A combination of manual and automated testing has been used to ensure that the website's functionality meets the desired intent.
+
+### Code Validation
+All code has been validated using an online validator specific to the language; all code now passes with zero errors, except one in the index.html page where `the element button must not appear as a descendant of the element.` The error was not fixed and will be mentioned in the bugs below since removing the class from the button element caused a different appearance. 
+
+- [W3C Markup Validation Service](https://validator.w3.org/) 
+    - Used to validate all HTML code written and used in this webpage.
+
+![](README_docs/Validation/html.png)
+
+- [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input)
+    - Used to validate all CSS code written and used in this webpage.
+
+![](README_docs/Validation/CSS.png)
+
+- [JSHint](https://jshint.com/)
+    - Used to validate JS code
+
+- [Pep8](http://pep8online.com/)
+    - Used to test my code for any issues or errors.
+
+- [Lighthouse](https://web.dev/measure/?gclid=Cj0KCQjwrs2XBhDjARIsAHVymmRXL8fiu8EoDLD_EPvDwuEmmeW-QbKgjm808ohCKPRL0tVnRJV4sMEaAkSUEALw_wcB/)
+    - Used to test the accessibility of the website.
+
+![](README_docs/Validation/lighthouse.png)
