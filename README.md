@@ -20,7 +20,7 @@ The app is designed as a booking application that encourages the users to make a
 
 ### User Stories that have been satisfied by creation of particular apps in ths project:
 
-| id  |  content | how was it satisfied
+| id  |  Content | How was it satisfied
 | ------ | ------ | ------ |
 |  [#1](https://github.com/van-essa/ladybike/issues/1) | As a user, I can read the page so that I can get more information about Ladybike and the team. | Webpage |
 |  [#2](https://github.com/van-essa/ladybike/issues/2) | As a user, I can click on the navbar so that I land on the page I am interested in. | Webpage |
@@ -40,10 +40,10 @@ The app is designed as a booking application that encourages the users to make a
 
 ### User stories that are planned for next sprint
 
-| id  |  content | 
+| id  |  Content | 
 | ------ | ------ |
 |  [#20](https://github.com/van-essa/ladybike/issues/20) | As a user, I can login with my social accounts so that I can get a smoother user experience. |
-|  [#19](https://github.com/van-essa/ladybike/issues/19) | AAs a user, I can share the articles on my Social Media accounts so that I can share it on my accounts. |
+|  [#19](https://github.com/van-essa/ladybike/issues/19) | As a user, I can share the articles on my Social Media accounts so that I can share it on my accounts. |
 |  [#18](https://github.com/van-essa/ladybike/issues/18) | As a user, I can comment on the articles so I can share my thoughts. |
 |  [#17](https://github.com/van-essa/ladybike/issues/17) | As a user, I can contact LadyBike via a contact form so that I can ask my questions. |
 |  [#16](https://github.com/van-essa/ladybike/issues/16) | As a user, I can choose different timeslots so that I can book the class according to my availability. |
@@ -193,3 +193,36 @@ Bookings with a date in the past would not be displayed, so the user would not b
 ![](README_docs/Features/cancel_booking.png)
 
 ![](README_docs/Features/cancel_2.png)
+
+---
+## Technologies Used
+
+Several technologies have been used to enable this design to work:
+
+| Technology  |  Content | 
+| ------ | ------ |
+|  [Django](https://www.djangoproject.com/) |Django is the framework that has been used to build the over project and its apps. |
+|  [Python](https://www.python.org/) | Python is the core programming language used to write all of the code in this application to make it fully functional. |
+|  [Bootstrap](https://getbootstrap.com/) | sed for creating responsive design. |
+|  [Google Fonts](https://fonts.google.com/) | Used to obtain the fonts linked in the header, fonts used were Lora and Sans Serrif |
+|  [Font Awesome](https://fontawesome.com/) | Used to obtain the icons used on the high scores and rules pages. |
+|  [Google Developer Tools](https://developers.google.com/web/tools/chrome-devtools) | Used as a primary method of fixing spacing issues, finding bugs, and testing responsiveness across the project. |
+|  [GitHub](https://github.com/) | Used as the development environment. |
+|  [Heroku](https://dashboard.heroku.com/apps) | Used to deploy my application. |
+|  [Lucid](https://lucid.app/documents#/dashboard) | Used to create the ERD for the project. |
+|  [Grammarly](https://www.grammarly.com/) | Used to fix the grammar errors across the project. |
+|  [Canva](https://www.canva.com/) | Used to create the animated images in the front page and rezise some of the pictures used in the project. |
+|  [Pep8](http://pep8online.com/) | Used to test my code for any issues or errors. |
+|  [Unicorn Revealer](https://chrome.google.com/webstore/detail/unicorn-revealer/lmlkphhdlngaicolpmaakfmhplagoaln?hl=en-GB) | Used to detect overflow of elements, which allowed me to quickly debug any issues. |
+|  [Coloors](https://coolors.co/) | Used to create a colour palette for the design. |
+|  [Cloudinary](https://cloudinary.com/) | Used to store all of my static files and images. |
+|  [Color Contrast Validator](https://color.a11y.com/) | Used to test the colour contrast accessibility of the website. |
+|  [W3C Markup Validation Service](https://validator.w3.org/) | Used to validate all HTML code written and used in this website. |
+|  [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/#validate_by_input) | Used to validate all CSS code written and used in this website. |
+|  [JSHint](https://jshint.com/) | Used to validate JS code written and used in this website. |
+|  [Freeformatter CSS Beautify](https://www.freeformatter.com/css-beautifier.html) | Used to accurately format the CSS code. |
+|  [Freeformatter HTML Formatter](https://www.freeformatter.com/html-formatter.html) | Used to accurately format the HTML code. |
+|  [AmIResponsive](http://ami.responsivedesign.is/) | Used to generate responsive image used in README file. |
+|  [Wave](https://wave.webaim.org/) | Used to test the accessibility of the website. |
+|  [Animate](https://animate.style/) | Used to animate forms. |
+|  [PostgreSQ](https://www.postgresql.org/) | Used to animate forms. | Two Heroku PostgresSQL were created. One for Testing usage and the other for storing the data for the models. |

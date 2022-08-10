@@ -1,8 +1,8 @@
 """Imports"""
 from datetime import date
 from django.test import TestCase
-from tests.tests_utils import TestUserUtils
 from articles.models import Post
+from tests.tests_utils import TestUserUtils
 
 
 class TestPost(TestCase):

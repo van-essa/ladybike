@@ -1,7 +1,6 @@
 """Imports"""
 from django.test import TestCase, Client
 from django.urls import reverse
-from articles.models import Post
 
 
 class TestViews(TestCase):
@@ -14,12 +13,14 @@ class TestViews(TestCase):
         self.article_detail_url = reverse('article_detail', args=['project1'])
 
     def test_article_list_GET(self):
+        """test list"""
         response = self.client.get(self.articles_url)
 
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'articles.html')
-  
+
     def test_article_detail_GET(self):
+        """test detail"""
         response = self.client.get(self.article_detail_url)
 
         self.assertEquals(response.status_code, 200)

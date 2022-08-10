@@ -124,20 +124,24 @@ WSGI_APPLICATION = 'ladybike.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-if os.environ.get("DEVELOPMENT") == True:
-    # Testing database
+if 'test' in os.sys.argv:
+    # Configuration for test database
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
+            'TEST': {
+                'NAME': 'd5d9qbp15tn1kb',
+                'USER': 'rwkjvumfawczja',
+                'PORT': 5432,
+                'PASSWORD': os.environ.get('TEST_DB_PASSWORD')
             }
         }
-
+    }
 else:
-    # Heroku database
+    # Default configuration
     DATABASES = {
-        'default': dj_database_url.parse(os.environ.get("DATABASE_URL")),
-        }
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 
 
 # Password validation
