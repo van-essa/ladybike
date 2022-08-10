@@ -24,9 +24,9 @@
                             <div class="image-container">
                                 {% if "placeholder" in post.featured_image.url %}
                                 <img class="card-img-top"
-                                    src="https://stagescycling.com/media/.renditions/wysiwyg/stages-cycling/landing-pages/home/2021/commercial_indoor_cycles-smiling-700px_by_500px.jpg">
+                                    src="https://stagescycling.com/media/.renditions/wysiwyg/stages-cycling/landing-pages/home/2021/commercial_indoor_cycles-smiling-700px_by_500px.jpg" alt="ladybike-aticles">
                                 {% else %}
-                                <img class="card-img-top" src="{{ post.featured_image.url }}">
+                                <img class="card-img-top" src="{{ post.featured_image.url }}" alt="ladybike-aticles">
                                 {% endif %}
                                 <div class="image-flash">
                                     <p class="author">Author: {{ post.author }}</p>

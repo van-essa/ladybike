@@ -34,10 +34,10 @@
           <div class="row gy-5">
           </div>
           <div class="d-flex flex-row bd-highlight mb-3 justify-content-center">
-            <div cals="row">
+            <div class="row justify-content-center">
   
   
-              <div class="col-md-8 offset-md-2 mb-5 mb-lg-0 aos-init aos-animate justify-content-center"
+              <div class="col-md-8 mb-5 mb-lg-0 aos-init aos-animate justify-content-center"
               style="text-align:center" data-aos="fade-up">
                   <div class="icon-box">
                       <div class="icon mb-3"><img src="{% static 'images/Strong_girl.png' %}" alt="Strong_girl">
@@ -49,7 +49,7 @@
               </div>
            
   
-              <div class="col-md-8 offset-md-2 mb-5 mb-lg-0 aos-init aos-animate justify-content-center"
+              <div class="col-md-8 mb-5 mb-lg-0 aos-init aos-animate justify-content-center"
               style="text-align:center" data-aos="fade-up" data-aos-delay="100">
                   <div class="icon-box">
                       <div class="icon mb-3"><img src="{% static 'images/Community.png' %}" alt="Community">
@@ -61,7 +61,7 @@
               </div>
   
   
-              <div class="col-md-8 offset-md-2 mb-5 mb-lg-0 aos-init aos-animate justify-content-center"
+              <div class="col-md-8 mb-5 mb-lg-0 aos-init aos-animate justify-content-center"
               style="text-align:center" data-aos="fade-up" data-aos-delay="200">
                   <div class="icon-box">
                       <div class="icon mb-3"><img src="{% static 'images/Cyclist.png' %}"  alt="Cyclist">
@@ -88,8 +88,9 @@
                   <h5 class="mb-0">
                     Our articles provide great content to inspire you to follow a healthy lifestyle.
                   </h5>
-                  <a class="btn bg-gradient-info btn-sm mb-0 mt-3" style="background-color: #d606ba;" href="articles.html"><button type="button" ><h5>Find out more</h5></button>
-                </a>
+                  <a class="btn bg-gradient-info btn-sm mb-0 mt-3" style="background-color: #d606ba;" href="{% url 'articles' %}">
+                    <button type="button" class="font-weight-bold" style="font-weight: 800;">Find out more</button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -98,7 +99,7 @@
       </section>
 
 <!-- END Section with four info areas left & one card right with image and waves -->
-    <!-- -------- START Feature with pattern background  -------- -->
+    <!-- START Feature with pattern background -->
     <section class="pb-5 position-relative bg-gradient-dark mx-n3">
       <h3 class="col-md-8 offset-md-2 text-center" style="color: #ffff;">
         Meet Our Trainers

@@ -203,7 +203,7 @@ Several technologies have been used to enable this design to work:
 | ------ | ------ |
 |  [Django](https://www.djangoproject.com/) |Django is the framework that has been used to build the over project and its apps. |
 |  [Python](https://www.python.org/) | Python is the core programming language used to write all of the code in this application to make it fully functional. |
-|  [Bootstrap](https://getbootstrap.com/) | sed for creating responsive design. |
+|  [Bootstrap](https://getbootstrap.com/) | Used for creating responsive design. |
 |  [Google Fonts](https://fonts.google.com/) | Used to obtain the fonts linked in the header, fonts used were Lora and Sans Serrif |
 |  [Font Awesome](https://fontawesome.com/) | Used to obtain the icons used on the high scores and rules pages. |
 |  [Google Developer Tools](https://developers.google.com/web/tools/chrome-devtools) | Used as a primary method of fixing spacing issues, finding bugs, and testing responsiveness across the project. |
@@ -225,4 +225,4 @@ Several technologies have been used to enable this design to work:
 |  [AmIResponsive](http://ami.responsivedesign.is/) | Used to generate responsive image used in README file. |
 |  [Wave](https://wave.webaim.org/) | Used to test the accessibility of the website. |
 |  [Animate](https://animate.style/) | Used to animate forms. |
-|  [PostgreSQ](https://www.postgresql.org/) | Used to animate forms. | Two Heroku PostgresSQL were created. One for Testing usage and the other for storing the data for the models. |
+|  [PostgreSQL](https://www.postgresql.org/) | Used to animate forms. | Two Heroku PostgresSQL were created. One for Testing usage and the other for storing the data for the models. |
