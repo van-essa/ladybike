@@ -186,7 +186,7 @@ def fetch_booking(request, User):
             # if no bookings
             return None
         else:
-            print(get_booking)
+            return get_booking
     else:
         # if user is not present in customer model
         return None
@@ -204,12 +204,17 @@ class ManageBooking(View):
     def get(self, request):
         """Receive manage booking form"""
         if request.user.is_authenticated:
-            # current_booking = fetch_booking(request)
-            current_booking = Booking.objects.all()
-            print(current_booking)
+            customer = get_customer_instance(request, User)
+            print("customer", customer)
 
-            # If the user has no bookings or does not exist as a 'customer'
-            if current_booking is None:
+            current_booking = fetch_booking(request, User)
+            print("current_booking", current_booking)
+
+            customer_booking = Booking.objects.filter(
+                booking_id=current_booking).values().order_by('requested_date')
+
+            # If the user has no bookings
+            if customer_booking is None:
                 messages.add_message(
                     request, messages.WARNING,
                     "You have no session booked. No worries! "
@@ -218,7 +223,6 @@ class ManageBooking(View):
                 return HttpResponseRedirect(url)
 
             else:
-                
                 return render(
                     request, 'manage_booking.html',
                     {'booking': current_booking})
@@ -235,7 +239,7 @@ class ManageBooking(View):
 
 class EditBooking(View):
     """ The view for user to be able to edit their existing bookings """
-    def get(self, request, booking_id, *args, **kwargs):
+    def get(self, request, booking_id):
         """Receive lesson edit form"""
         if request.user.is_authenticated:
             # Get booking object based on id
@@ -298,13 +302,13 @@ class EditBooking(View):
             url = reverse('booking')
             return HttpResponseRedirect(url)
 
-    def post(self, request, booking_id, *args, **kwargs):
+    def post(self, request, booking_id):
         customer = get_customer_instance(request, User)
         if request.user.is_authenticated:
             # get booking from database
             booking_id = booking_id
             booking = get_object_or_404(
-                Booking, booking_id=booking_id)     
+                Booking, booking_id=booking_id)
             booking_form = BookingForm(
                 data=request.POST, instance=booking)
             customer_form = CustomerForm(instance=customer)
@@ -328,7 +332,7 @@ class EditBooking(View):
                 has now been updated.")
             # Fetch new list of bookings to display
             current_booking = fetch_booking(request, User)
-            
+
             # Return user to manage booking page
             return render(request, 'manage_booking.html', {
                 'booking': current_booking})
@@ -349,7 +353,7 @@ class EditBooking(View):
 
 class DeleteBooking(View):
     """ View for user to delete bookings """
-    def get(self, request, booking_id, *args, **kwargs):
+    def get(self, request, booking_id):
         """ Recieve delete booking """
         if request.user.is_authenticated:
             booking = get_object_or_404(
@@ -389,7 +393,7 @@ class DeleteBooking(View):
             url = reverse('booking')
             return HttpResponseRedirect(url)
 
-    def post(self, request, booking_id, *args, **kwargs):
+    def post(self, request, booking_id):
         """ Get booking from database """
         if request.user.is_authenticated:
             booking_id = booking_id
@@ -401,6 +405,6 @@ class DeleteBooking(View):
         # Get updated list of bookings
         current_booking = fetch_booking(request, User)
         # Return user to manage booking page
-        
+
         return render(request, 'manage_booking.html',
                       {'booking': current_booking})

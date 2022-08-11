@@ -44,7 +44,13 @@
                                     break-neck speed, and other times pedaling happens from a slow, standing position.
                                 </p>
                             </div>
+                            {% if request.user.is_authenticated %}
                             <div class="card-footer text-center" style="background-color: #d606ba;"><a class="btn btn-secondary btn-lg" href="{% url 'booking' %}">Book</a></div>
+                            {% else %}
+                            <div class="alert alert-danger" role="alert">
+                              You must be logged in to make bookings.
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
 
@@ -64,7 +70,13 @@
                                     glutes and calves more than you would if you were cycling on flat terrain. A great class to increase your strength and power.
                                 </p>
                             </div>
+                            {% if request.user.is_authenticated %}
                             <div class="card-footer text-center" style="background-color: #d606ba;"><a class="btn btn-secondary btn-lg" href="{% url 'booking' %}">Book</a></div>
+                            {% else %}
+                            <div class="alert alert-danger" role="alert">
+                              You must be logged in to make bookings.
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
 
@@ -83,7 +95,13 @@
                                     It combines intervals of cardio with strength conditioning, moving quickly between 
                                     the bike and equipment on the ground. Expect to work with dumbbells, bands, gliders, and your own body-weight.</p>
                             </div>
+                            {% if request.user.is_authenticated %}
                             <div class="card-footer text-center" style="background-color: #d606ba;"><a class="btn btn-secondary btn-lg" href="{% url 'booking' %}">Book</a></div>
+                            {% else %}
+                            <div class="alert alert-danger" role="alert">
+                              You must be logged in to make bookings.
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

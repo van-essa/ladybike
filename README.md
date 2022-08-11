@@ -253,3 +253,20 @@ All code has been validated using an online validator specific to the language; 
     - Used to test the accessibility of the website.
 
 ![](README_docs/Validation/lighthouse.png)
+
+### Manual Testing
+
+This project has been tested manually by the creator, Vanessa Andersson, and have also asked to had it peer-reviewed & tested by friends and family on multiple devices and screen sizes.
+
+[TESTING]()
+
+### Automated Testing
+
+Coverage library has been used throughout testing to keep track how much of Python code was covered by the tests written. From running the coverage report the website has 81% of the code tested. The remaining code is covered by manual testing. You can look at the report [HERE](README_docs/Testing/Testing_Coverage.png)
+
+To generate your own coverage report from the command line:
+
+1. Install the package using `pip3 install coverage`
+2. Run `coverage run manage.py test`
+3. Then `coverage html` to generate the report
+4. You can view the report in a browser by using the command `python3 -m http.server` and opening the `index.html` file from inside the `htmlcov` folder.
