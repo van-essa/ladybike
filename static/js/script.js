@@ -49,6 +49,17 @@ function deleteModal() {
     });
 }
 
+// Adds and removes classes in map section depending on screen width.
+function screenSize() {
+    if (window.innerWidth < 994) {
+        $('#map-section').addClass('hidden');
+        $('#contact-section').addClass('col-md-6');
+    } else {
+        $('#map-section').removeClass('hidden');
+        $('#contact-section').removeClass('col-md-6');
+    }
+}
+
 // The debounce function is eadded to ensure a 
 //given task doesn't fire so often that it 
 // bricks browser performance
