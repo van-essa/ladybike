@@ -53,10 +53,8 @@ function deleteModal() {
 function screenSize() {
     if (window.innerWidth < 994) {
         $('#map-section').addClass('hidden');
-        $('#contact-section').addClass('col-md-6');
     } else {
         $('#map-section').removeClass('hidden');
-        $('#contact-section').removeClass('col-md-6');
     }
 }
 
