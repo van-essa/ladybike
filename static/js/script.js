@@ -49,15 +49,6 @@ function deleteModal() {
     });
 }
 
-// Adds and removes classes in map section depending on screen width.
-function screenSize() {
-    if (window.innerWidth < 994) {
-        $('#map-section').addClass('hidden');
-    } else {
-        $('#map-section').removeClass('hidden');
-    }
-}
-
 // The debounce function is eadded to ensure a 
 //given task doesn't fire so often that it 
 // bricks browser performance
@@ -77,13 +68,6 @@ function debounce(func, wait, immediate) {
     };
 }
 
-var screenChangeEfficient = debounce(function () {
-    screenSize();
-}, 150);
-
-// Trigger efficient screen class function each time screen resizes
-window.addEventListener('resize', screenChangeEfficient);
-
 // Call all functions 
 $(document).ready(function () {
 
@@ -96,8 +80,6 @@ $(document).ready(function () {
     checkDate();
 
     removeDisableAttrOnSubmit();
-
-    screenSize();
 });
 
 
