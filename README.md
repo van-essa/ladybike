@@ -399,11 +399,11 @@ Throughout the process of building this website, various online sources have bee
 * [Updating form](https://stackoverflow.com/questions/42217334/django-get-data-and-edit-in-the-same-form-edit-in-one-place)
 * [Markdown best practices](https://www.markdownguide.org/basic-syntax/)
 * [Appseed Templates](https://appseed.us/generator/material-kit/)
+* [Debounce](https://davidwalsh.name/javascript-debounce-function)
 
 ### Tutorials and inspiration
 
 * The walkthrough project 'I Think Therefore I Blog' from Code Institute [videos](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+FST101+2021_T1/courseware/b31493372e764469823578613d11036b/fe4299adcd6743328183aab4e7ec5d13/).
-* [Debounce](https://davidwalsh.name/javascript-debounce-function)
 * My favourite webpage as inspiration [SWEAT](https://www.sweat.com/)
 * Card template from [bootstrap examples](https://getbootstrap.com/docs/4.4/components/card/)
 * Testing YouTube tutorial for my automated testing [Testing](https://www.youtube.com/playlist?list=PLbpAWbHbi5rMF2j5n6imm0enrSD9eQUaM)
