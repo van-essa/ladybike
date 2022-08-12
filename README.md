@@ -14,7 +14,7 @@ LadyBike is a cycling booking platform only for women. It provides three biking 
 
 Users can log in with their credentials to make a booking and like the articles. 
 
-###Strategy
+### Strategy
 Using the core UX principles in design thinking a pesona profile was created by using Code Institutes template and you can find it [HERE](README_docs/UX/Design_Thinking_Persona_template_Project4_Ladybike.pdf)
 
 This website will offer all of these things listed in the Persona template whilst also allowing for intuitive navigation and comfortability of use.
@@ -106,7 +106,7 @@ The classes model is also used to determine the classes' availability. This logi
 
 Entity Relationship Diagram below to see how the models relate to each other:
 
-![Database Schemas can be found here](README_docs/Database/Database_LadyBike.png)
+![Database Schemas can be found here](README_docs/Database/Database.png)
 
 ### Skeleton
 [Wireframes can be viewed here](README_docs/Wireframes/LadyBike_Wireframes.pdf)
