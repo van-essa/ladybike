@@ -1,3 +1,13 @@
+# LadyBike Booking Cycling Platform
+
+![](README_docs/Responsive/Responsive.png)
+
+[Live application can be found here](https://ladybike.herokuapp.com/home)
+
+This full-stack framework project was built using Django, Python, HTML, CSS and JavaScript. This is a cycling booking website designed to display cycling classes to customers and allow them to make/edit/delete bookings. This project has been built for educational purposes.
+
+---
+
 ## UX
 
 LadyBike is a cycling booking platform only for women. It provides three biking classes, and articles focused on a healthy lifestyle and cycling tips. It is designed in light and dark-coloured style, using fuchsia and dark light grey colours. The user is given plenty of choices on how to get to the booking form from the home page - via the navbar and a call to action button.
