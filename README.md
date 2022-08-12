@@ -258,7 +258,7 @@ All code has been validated using an online validator specific to the language; 
 
 This project has been tested manually by the creator, Vanessa Andersson, and have also asked to had it peer-reviewed & tested by friends and family on multiple devices and screen sizes.
 
-[TESTING]()
+[TESTING](README_docs/Testing/Testing.pdf)
 
 ### Automated Testing
 
@@ -270,3 +270,152 @@ To generate your own coverage report from the command line:
 2. Run `coverage run manage.py test`
 3. Then `coverage html` to generate the report
 4. You can view the report in a browser by using the command `python3 -m http.server` and opening the `index.html` file from inside the `htmlcov` folder.
+
+### Bugs and Fixes
+
+ - I noticed that upon submitting the reservation form the month was always saved as January (01) no matter what date the user had selected. To fix this I stopped using `[cleaned-data]` to retrieve the information from the post request and used `request.data.POST` instead and reformatted the date myself using `strptime`.
+
+ - After deploying my project to Heroku I had an issue with my header, the background image wasn't loading with the file path `assets/images/header-background.jpg`, after discussing the issue with others we concluded that due to me linking an image within the static directory in my CSS file (that was also in the static directory) this is what was causing the problem. For that reason, I have linked directly the Cloudinary image URL. 
+
+- At various stages of my testing, upon submitting the contact form some users received a 500 error, this was due to Gmail preventing my application from logging in. I would receive an email to alert me of this login attempt and so I have had to enable these permissions a handful of times in order for it to work.
+
+---
+## Deployment
+
+The master branch of this repository has been used for the deployed version of this application.
+
+### Using Github & Gitpod
+
+To deploy my Django application, I had to use the [Code Institute Full Template](https://github.com/Code-Institute-Org/gitpod-full-template).
+
+- Click the `Use This Template` button.
+- Add a repository name and brief description.
+- Click the `Create Repository from Template` to create your repository.
+- To create a Gitpod workspace you then need to click `Gitpod`, this can take a few minutes.
+- When you want to work on the project it is best to open the workspace from Gitpod (rather than Github) as this will open your previous workspace rather than creating a new one. You should pin the workspace so that it isn't deleted.
+-  Committing your work should be done often and should have clear/explanatory messages, use the following commands to make your commits:
+    - `git add .`: adds all modified files to a staging area
+    - `git commit -m "A message explaining your commit"`: commits all changes to a local repository.
+    - `git push`: pushes all your committed changes to your Github repository.
+
+### Forking the GitHub Repository
+
+By forking the GitHub Repository you will be able to make a copy of the original repository on your own GitHub account allowing you to view and/or make changes without affecting the original repository by using the following steps:
+
+1. Log in to GitHub and locate the [GitHub Repository](repo here???)
+2. At the top of the Repository (not top of page) just above the "Settings" button on the menu, locate the "Fork" button.
+3. You should now have a copy of the original repository in your GitHub account.
+
+### Making a Local Clone
+
+1. Log in to GitHub and locate the [GitHub Repository](repo here???)
+2. Under the repository name, click "Clone or download".
+3. To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
+4. Open commandline interface on your computer
+5. Change the current working directory to the location where you want the cloned directory to be made.
+6. Type `git clone`, and then paste the URL you copied in Step 3.
+
+```
+$ git clone http..repo here???
+```
+
+7. Press Enter. Your local clone will be created.
+
+### Deployment to heroku
+
+**In your app** 
+
+1. add the list of requirements by writing in the terminal "pip3 freeze --local > requirements.txt"
+2. Git add and git commit the changes made
+
+**Log into heroku**
+
+3. Log into [Heroku](https://dashboard.heroku.com/apps) or create a new account and log in
+
+4. top right-hand corner click "New" and choose the option Create new app, if you are a new user, the "Create new app" button will appear in the middle of the screen
+
+5. Write app name - it has to be unique, it cannot be the same as this app
+6. Choose Region - I am in Europe
+7. Click "Create App"
+
+**The page of your project opens.**
+
+8. Go to Resources Tab, Add-ons, search and add Heroku Postgres
+
+9. Choose "settings" from the menu on the top of the page
+
+10. Go to section "Config Vars" and click button "Reveal Config Vars". 
+
+11. Add the below variables to the list
+
+    * Database URL will be added automaticaly
+    * Secret_key - is the djnago secret key can be generated [here](https://miniwebtool.com/django-secret-key-generator/). 
+
+
+**Go back to your code**
+
+12. Procfile needs to be created in your app
+```
+web: gunicorn PROJ_NAME.wsgi
+```
+
+13. In settings in your app add Heroku to ALLOWED_HOSTS
+
+14. Add and commit the changes in your code and push to github
+
+**Final step - deployment**
+
+15. Next go to "Deploy" in the menu bar on the top 
+
+16. Go to section "deployment method", choose "GitHub"
+
+17. New section will appear "Connect to GitHub" - Search for the repository to connect to
+
+18. type the name of your repository and click "search"
+
+19. once Heroku finds your repository - click "connect"
+
+20. Scroll down to the section "Automatic Deploys"
+
+21. Click "Enable automatic deploys" or choose "Deploy branch" and manually deploy
+
+22. Click "Deploy branch"
+
+Once the program runs:
+you should see the message "the app was sussesfully deployed"
+
+23. Click the button "View"
+
+The live link can be found [here](live/page/here/???)
+
+---
+## Credits
+
+Throughout the process of building this website, various online sources have been used to help fix bugs & tackle problems, in addition to multiple modules to create the functionality of this website:
+
+### Online resources
+* [Icons8](https://icons8.com/)
+* [unsplash](https://unsplash.com/)
+* [Fontawsome](https://fontawesome.com/)
+* [Bootstrap 5]()
+* [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
+* [Django Allauth](https://django-allauth.readthedocs.io/en/latest/installation.html)
+* [Queryset Display](https://stackoverflow.com/questions/48872380/display-multiple-queryset-in-list-view)
+* [Updating form](https://stackoverflow.com/questions/42217334/django-get-data-and-edit-in-the-same-form-edit-in-one-place)
+* [Markdown best practices](https://www.markdownguide.org/basic-syntax/)
+* [Appseed](https://appseed.us/generator/material-kit/)
+
+### Tutorials and inspiration
+
+* The walkthrough project 'I Think Therefore I Blog' from Code Institute [videos](https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+FST101+2021_T1/courseware/b31493372e764469823578613d11036b/fe4299adcd6743328183aab4e7ec5d13/).
+* [Debounce](https://davidwalsh.name/javascript-debounce-function)
+* My favourite webpage as inspiration [SWEAT](https://www.sweat.com/)
+* Card template from [bootstrap examples](https://getbootstrap.com/docs/4.4/components/card/)
+* Testing YouTube tutorial for my automated testing [Testing](https://www.youtube.com/playlist?list=PLbpAWbHbi5rMF2j5n6imm0enrSD9eQUaM)
+
+### People
+
+- Daisy Mc Girr - my mentor from Code Institute
+- Julia Konn - for testing the app extensively
+- Rachel Rock - for testing the app extensively
+- Kamil Kwiatkowski - for testing the app extensively
