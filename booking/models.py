@@ -17,11 +17,11 @@ class Customer(models.Model):
 class ClassName(models.Model):
     """ Class Type Model """
 
-    CLASS_CHOICES = ((1, 'Spinning'),
-                     (2, 'Ride_that_hill'),
-                     (3, 'LadyBike'))
+    CLASS_CHOICES = (('Spinning', 'Spinning'),
+                     ('Ride_that_hill', 'Ride_that_hill'),
+                     ('LadyBike', 'LadyBike'))
 
-    classes = models.IntegerField(choices=CLASS_CHOICES, primary_key=True)
+    classes = models.CharField(max_length=15, choices=CLASS_CHOICES, primary_key=True)
 
     def __str__(self):
         return str(self.classes)

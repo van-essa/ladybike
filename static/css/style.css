@@ -576,3 +576,10 @@ input#id_requested_date {
     background: #d606ba;
     color: #Effbed;
 }
+
+/* Map Hide */
+@media only screen and (max-width: 994px) {
+    #map-section {
+        display: none;
+    }
+}
