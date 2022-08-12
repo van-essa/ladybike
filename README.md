@@ -273,11 +273,6 @@ To generate your own coverage report from the command line:
 
 ### Bugs and Fixes
 
- - I noticed that upon submitting the reservation form the month was always saved as January (01) no matter what date the user had selected. To fix this I stopped using `[cleaned-data]` to retrieve the information from the post request and used `request.data.POST` instead and reformatted the date myself using `strptime`.
-
- - After deploying my project to Heroku I had an issue with my header, the background image wasn't loading with the file path `assets/images/header-background.jpg`, after discussing the issue with others we concluded that due to me linking an image within the static directory in my CSS file (that was also in the static directory) this is what was causing the problem. For that reason, I have linked directly the Cloudinary image URL. 
-
-- At various stages of my testing, upon submitting the contact form some users received a 500 error, this was due to Gmail preventing my application from logging in. I would receive an email to alert me of this login attempt and so I have had to enable these permissions a handful of times in order for it to work.
 
 ---
 ## Deployment
@@ -395,7 +390,7 @@ Throughout the process of building this website, various online sources have bee
 
 ### Online resources
 * [Icons8](https://icons8.com/)
-* [unsplash](https://unsplash.com/)
+* [Unsplash](https://unsplash.com/)
 * [Fontawsome](https://fontawesome.com/)
 * [Bootstrap 5]()
 * [Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
@@ -403,7 +398,7 @@ Throughout the process of building this website, various online sources have bee
 * [Queryset Display](https://stackoverflow.com/questions/48872380/display-multiple-queryset-in-list-view)
 * [Updating form](https://stackoverflow.com/questions/42217334/django-get-data-and-edit-in-the-same-form-edit-in-one-place)
 * [Markdown best practices](https://www.markdownguide.org/basic-syntax/)
-* [Appseed](https://appseed.us/generator/material-kit/)
+* [Appseed Templates](https://appseed.us/generator/material-kit/)
 
 ### Tutorials and inspiration
 
@@ -415,7 +410,8 @@ Throughout the process of building this website, various online sources have bee
 
 ### People
 
-- Daisy Mc Girr - my mentor from Code Institute
-- Julia Konn - for testing the app extensively
-- Rachel Rock - for testing the app extensively
-- Kamil Kwiatkowski - for testing the app extensively
+- Harry Dhillon - my mentor from Code Institute
+- Cristian Deri - for testing the app extensively
+- Robert Andersson - for testing the app extensively
+- The team at Tutor Support at Code Institure - for helping me with my bugs
+- My classmates - for helping me when asked for help on Slack
