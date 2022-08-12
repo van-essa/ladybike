@@ -25,17 +25,15 @@
     </div>
   </header>
 
+  <!-- Content Card-->
+  <div class="container-fluid pt-5">
   <section class="pb-4">
-  <div class="container justify-content-center">
-  <section class= "p-4 text-center w-100">
-
-                <!-- Content Card-->
-                <div class="card-group gx-4 gx-lg-5">
-                    <div class="col-md-4 mb-5 mt-4 pl-5">
-                        <div class="card h-100" style="width: 23rem;">
-                            <div class="card-body">
-                                <img  class="card-img-top" src="{% static 'images/header.jpg' %}" alt="spinning_class">
-                                <h2 class="card-title pt-4" style="color: #d606ba;">Spinning</h2>
+    <div class="container justify-content-center">
+  <div class="card-group">
+    <div class="card">
+      <img  class="card-img-top" src="{% static 'images/header.jpg' %}" alt="spinning_class">
+      <div class="card-body">
+        <h2 class="card-title pt-4" style="color: #d606ba;">Spinning</h2>
                                 <h6>Available: <span style="color: #d606ba;">Everyday</span></h6>
                                 <h6>Start Time: <span style="color: #d606ba;">07:00 AM</span></h6>
                                 <h6>Ends: <span style="color: #d606ba;">08:00 AM</span></h6>
@@ -44,78 +42,68 @@
                                     visualization of an outdoor workout. The pace and speed will vary throughout the workout, sometimes requiring 
                                     break-neck speed, and other times pedaling happens from a slow, standing position.
                                 </p>
-                            </div>
-                            <!-- Adjusting the view according to authentication -->
-                            {% if request.user.is_authenticated %}
-                            <div class="card-footer text-center" style="background-color: #d606ba;"><a class="btn btn-secondary btn-lg" href="{% url 'booking' %}">Book</a></div>
-                            {% else %}
-                            <div class="alert alert-danger" role="alert">
-                              You must be logged in to make bookings.
-                            </div>
-                            {% endif %}
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-4 mb-5 mt-4 px-4">
-                        <div class="card h-100" style="width: 23rem;">
-                            <div class="card-body">
-                                <img  class="card-img-top" src="{% static 'images/ride_that_hill_class.png' %}" alt="spinning_class">
-                                <h2 class="card-title pt-4" style="color: #d606ba;">Ride That Hill</h2>
-                                <h6>Available: <span style="color: #d606ba;">Everyday</span></h6>
-                                <h6>Start Time: <span style="color: #d606ba;">11:30 AM</span></h6>
-                                <h6>Ends: <span style="color: #d606ba;">12:30 PM</span></h6>
-                                <h6>Calories burnt: <span style="color: #d606ba;">500-600</span></h6>
-                                <p class="card-text">Ride that hill is an indoor cycling climbing drill where you simulate a hill that creeps 
-                                    in grade into a very steep mountain like grade by the end. Whilst cycling up hills seated, you engage your quads, 
-                                    glutes and calves more than you would if you were cycling on flat terrain. A great class to increase your strength and power.
-                                </p>
-                            </div>
-                            <!-- Adjusting the view according to authentication -->
-                            {% if request.user.is_authenticated %}
-                            <div class="card-footer text-center" style="background-color: #d606ba;"><a class="btn btn-secondary btn-lg" href="{% url 'booking' %}">Book</a></div>
-                            {% else %}
-                            <div class="alert alert-danger" role="alert">
-                              You must be logged in to make bookings.
-                            </div>
-                            {% endif %}
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-4 mb-5 mt-4 px-5">
-                        <div class="card h-100" style="width: 23rem;">
-                            <div class="card-body">
-                                <img  class="card-img-top" src="{% static 'images/ladybike_class.jpg' %}" alt="spinning_class">
-                                <h2 class="card-title pt-4" style="color: #d606ba;">Ladybike</h2>
+      </div>
+      <!-- Adjusting the view according to authentication -->
+      {% if request.user.is_authenticated %}
+      <div class="card-footer text-center" style="background-color: #d606ba;"><a class="btn btn-secondary btn-lg" href="{% url 'booking' %}">Book</a></div>
+      {% else %}
+      <div class="alert alert-danger" role="alert">
+        You must be logged in to make bookings.
+      </div>
+      {% endif %}
+    </div>
+    <div class="card">
+      <img  class="card-img-top" src="{% static 'images/ride_that_hill_class.png' %}" alt="spinning_class">
+      <div class="card-body">
+        <h2 class="card-title pt-4" style="color: #d606ba;">Ladybike</h2>
                                 <h6>Available: <span style="color: #d606ba;">Everyday</span></h6>
                                 <h6>Start Time: <span style="color: #d606ba;">18:00 PM</span></h6>
                                 <h6>Ends: <span style="color: #d606ba;">19:00 PM</span></h6>
                                 <h6>Calories burnt: <span style="color: #d606ba;">600-700</span></h6>
                                 <p class="card-text">Is an intense combo class that will push your body to the limit. 
                                     It combines intervals of cardio with strength conditioning, moving quickly between 
-                                    the bike and equipment on the ground. Expect to work with dumbbells, bands, gliders, and your own body-weight.</p>
-                            </div>
-                            <!-- Adjusting the view according to authentication -->
-                            {% if request.user.is_authenticated %}
-                            <div class="card-footer text-center" style="background-color: #d606ba;"><a class="btn btn-secondary btn-lg" href="{% url 'booking' %}">Book</a></div>
-                            {% else %}
-                            <div class="alert alert-danger" role="alert">
-                              You must be logged in to make bookings.
-                            </div>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-              </section>
-            </div>
-          </section>
-
-
+                                    the bike and equipment on the ground. Expect to work with dumbbells, bands, gliders, and your own body-weight.
+                                  </p>
+      </div>
+      <!-- Adjusting the view according to authentication -->
+      {% if request.user.is_authenticated %}
+      <div class="card-footer text-center" style="background-color: #d606ba;"><a class="btn btn-secondary btn-lg" href="{% url 'booking' %}">Book</a></div>
+      {% else %}
+      <div class="alert alert-danger" role="alert">
+        You must be logged in to make bookings.
+      </div>
+      {% endif %}
+    </div>
+    <div class="card">
+      <img  class="card-img-top" src="{% static 'images/ladybike_class.jpg' %}" alt="spinning_class">
+      <div class="card-body">
+        <h2 class="card-title pt-4" style="color: #d606ba;">Ladybike</h2>
+                                <h6>Available: <span style="color: #d606ba;">Everyday</span></h6>
+                                <h6>Start Time: <span style="color: #d606ba;">18:00 PM</span></h6>
+                                <h6>Ends: <span style="color: #d606ba;">19:00 PM</span></h6>
+                                <h6>Calories burnt: <span style="color: #d606ba;">600-700</span></h6>
+                                <p class="card-text">Is an intense combo class that will push your body to the limit. 
+                                    It combines intervals of cardio with strength conditioning, moving quickly between 
+                                    the bike and equipment on the ground. Expect to work with dumbbells, bands, gliders, and your own body-weight.
+                                  </p>
+      </div>
+      <!-- Adjusting the view according to authentication -->
+      {% if request.user.is_authenticated %}
+      <div class="card-footer text-center" style="background-color: #d606ba;"><a class="btn btn-secondary btn-lg" href="{% url 'booking' %}">Book</a></div>
+      {% else %}
+      <div class="alert alert-danger" role="alert">
+        You must be logged in to make bookings.
+      </div>
+      {% endif %}
+    </div>
+  </div>
+    </div>
+  </section>
+</div>
   
 
   <div class="card card-body shadow-xl mx-3 mx-md-4 mt-n6 bg-gradient-dark">
-    <!-- Section with four info areas left & one card right with image and waves -->
+    <!-- Section with info areas with map -->
     <section class="py-7">
       <div class="container" style="margin-top:50px">
           <div class="row gy-5">
