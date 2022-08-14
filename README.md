@@ -4,7 +4,7 @@
 
 [Live application can be found here](https://ladybike.herokuapp.com/home)
 
-This full-stack framework project was built using Django, Python, HTML, CSS and JavaScript. This is a cycling booking website designed to display cycling classes to customers and allow them to make/edit/delete bookings. This project has been built for educational purposes.
+This full-stack framework project was built using Django, PostgreSQL, Python, HTML, CSS and JavaScript. This is a cycling booking website designed to display cycling classes to customers and allow them to make/edit/delete bookings. The website also provides a list of articles users can choose to read from and can like if logged in. This project has been built for educational purposes.
 
 ---
 
@@ -138,7 +138,11 @@ The fonts chosen for this project are 'Lora' & 'SansSerif', beautifully clean an
 
 If the user is logged in, then the right side of the menu shows links for pages that only authorised users can visit & use; they are: 'Manage Reservations' & 'Logout'. Otherwise, the user will be given the option to 'Register' or 'Login'. This change in the menu ensures users are directed to pages they can use, preventing any frustration and prompting them to sign up for an account. Furthermore, it makes it abundantly clear what the logged-in status is to the user.
 
+Also, if the user is logged in, the CTA on the header of the front page is linked to the booking page.  Otherwise, the CTA is linking the unlogged user to the classes page
+
 ![](README_docs/Features/navbarBig.png)
+
+![](README_docs/Features/navBarNot.png)
 
 The navigation bar is fully responsive and collapses on mobile screens to a hamburger icon, this easily allows the user to continue to use the navigation links without the need to press back on the browser. 
 
@@ -147,7 +151,7 @@ The navigation bar is fully responsive and collapses on mobile screens to a hamb
 
 **Home**: The user gets the information on the home page to understand that this is a cycling booking platform only for women. Then the trainers' profile is followed to provide a professional background. The front page aims to create a welcoming atmosphere for the user and a clear message to the target audience. Also a link to book a class is provided on the header of the page.
 
-![](README_docs/Features/home.png)
+![](README_docs/Features/Home.png)
 
 ![](README_docs/Features/home2.png)
 
@@ -162,14 +166,20 @@ The navigation bar is fully responsive and collapses on mobile screens to a hamb
 
 ![](README_docs/Features/articles.png)
 
-![](README_docs/Features/likepost.png)
+![](README_docs/Features/article_like.png)
 
 ### Classes
-**Our Classes**: On the 'Our Classes' page, the user can learn more about each class and click on the call to action 'Book' to link to the booking system and book the class they want.
+**Our Classes**: On the 'Our Classes' page, the user can learn more about each class and click on the call to action 'Book' to link to the booking system and book the class they want if they are logged in. If the user is not logged in, an alert message will be shown reminding them that they must log in to make a booking.
 
 ![](README_docs/Features/ourclasses.png)
 
+If user is not logged in
+
 ![](README_docs/Features/classes.png)
+
+If user is logged in
+
+![](README_docs/Features/classesloggedin.png)
 
 The user can also look at Ladybike's address and contact info for customer support.
 
@@ -186,7 +196,7 @@ In order to make a booking, the user must either register or log in.
 
 ![](README_docs/Features/booking.png)
 
-Alos, noteworthy to mention that the user can logout whnenever they want.
+Also, noteworthy to mention that the user can logout whnenever they want.
 
 ![](README_docs/Features/signout.png)
 
@@ -195,15 +205,17 @@ Alos, noteworthy to mention that the user can logout whnenever they want.
 
 The booking ID is displayed at the top of the booking item so they can be easily identified.
 
-There are also edit & delete buttons; users can edit or delete existing bookings they have created that are either 'approved' or 'pending'. 
+There are also edit & delete buttons; users can edit or delete existing bookings they have created. 
 
 ![](README_docs/Features/manage_booking.png)
 
-Bookings with a date in the past would not be displayed, so the user would not be able to edit or delete them, which could confuse the user and the admin user. Reservations with a 'rejected' status can also not be changed for the same reasons. 
+Bookings with a date in the past would not be displayed, so the user would not be able to edit or delete them, which could confuse the user and the admin user.
 
 **Edit Booking**: This page displays the booking form pre-populated using the booking instance; the user can change the class and the date in the form. After resubmitting, the user is redirected to the 'Manage booking' page, and a success message is displayed showing which booking was edited. 
 
 ![](README_docs/Features/edit_booking.png)
+
+![](README_docs/Features/bookingupdated.png)
 
 **Delete Booking**: This page displays the booking selected with all of its information, the user presses 'Cancel Booking', and a modal pop is up for the user to confirm the cancellation, explaining that this cannot be undone. If the user chooses 'Cancel', the booking will be deleted from the model. After confirming, the user is redirected to the 'Manage Bookings' page, and a success message shows which reservation was edited.
 
@@ -296,7 +308,7 @@ To generate your own coverage report from the command line:
 
 A problem occurred when a change was created in the Booking Models.
 
-(README_docs/Bugs/DatabaseIssue/bugdatabase.png)
+![](README_docs/Bugs/DatabaseIssue/bugdatabase.png)
 
 The first step was to run the following:
 - `python3 manage.py makemigrations --dry-run`
@@ -306,21 +318,21 @@ The first step was to run the following:
 
 But that did not solve the issue:
 
-(README_docs/Bugs/DatabaseIssue/migration.png)
+![](README_docs/Bugs/DatabaseIssue/migration.png)
 
 Then I tried to add 1 instead of True on the seats default session, but it did not help solve the issue. Thus a clean state needed to be craeted to rerun the commands. The steps followed were:
 1. Remove all migrations files within the project. Go through Articles and Booking migration folders and remove everything inside, except the __init__.py file, whis it is essential **not** to remove this.
 2. Go to the Heroku app dashboard and find Resources, then click Heroku PostGres:
 
-(README_docs/Bugs/DatabaseIssue/herokupostgress.png)
+![](README_docs/Bugs/DatabaseIssue/herokupostgress.png)
 
 3. Then in data.heroku, go to Settings
 
-(README_docs/Bugs/DatabaseIssue/herokudata.png)
+![](README_docs/Bugs/DatabaseIssue/herokudata.png)
 
 4. Click on Reset Database, type the app name, namely Ladybike in the prompted box and press Reset Database
 
-(README_docs/Bugs/DatabaseIssue/resetdatabase.png)
+![](README_docs/Bugs/DatabaseIssue/resetdatabase.png)
 
 5. After resetting, if there is a new DATABASE_URL, it should be in the Heroku config vars, copy paste that and paste it into the env.py file.
 6. When that is done, run migrations to create the tables on the database
@@ -340,7 +352,7 @@ Which worked to solve the issue.
 
 When running pytho3 manage.py runserver, this error popped up.
 
-(README_docs/Bugs/Credentials/credentials.png)
+![](README_docs/Bugs/Credentials/credentials.png)
 
 The error occurred because the credentials for Ladybike's Heroku database have been rotated. This happens when Heroku performs database maintenance on their servers. The DATABASE_URL var in the Heroku app config vars will update automatically with the new Postgres URI, but you'll need to update your env.py file locally. Thus, the env.py file was updated with the new Postgress URI, and the error disappeared.
 
@@ -348,7 +360,7 @@ The error occurred because the credentials for Ladybike's Heroku database have b
 
 When testing to register, no action occurred. Namely, the user did not log in. It was just redirecting the user to the login page. Then, looking closer at the terminal, the result was that the user was registered through the Social account, which was decided not to be implemented in the application. Yet, it was mentioned on the Registration HTML file (signup.html).
 
-(README_docs/Bugs/Signup/registration.png)
+![](README_docs/Bugs/Signup/registration.png)
 
 Thus, the solution was the replacement from socialaccount_signup to account_signup; namely:
 `<form role="form" class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">`
@@ -363,7 +375,7 @@ instead of
 
 When Testing Manage Bookings, the user could not see anything even though they had made a booking. The problem with this issue occurred because the booking was printed instead of returned on the Booking Views file.
 
-(README_docs/Bugs/ManageBooking/printbooking.png)
+![](README_docs/Bugs/ManageBooking/printbooking.png)
 
 Namely it should be `return get_booking`
 
@@ -371,7 +383,7 @@ Namely it should be `return get_booking`
 
 The 'Our Classes' page was not responsive on smaller devices with regards to the initial card Bootstrap setting of each class:
 
-(README_docs/Bugs/Cards/bugwithcards.png)
+![](README_docs/Bugs/Cards/bugwithcards.png)
 
 Thus a group-card class was chosen instead, so the cards are aligned and mobile-friendly.
 
@@ -380,8 +392,13 @@ Thus a group-card class was chosen instead, so the cards are aligned and mobile-
 
 Google Maps was featured under the contact information of Ladybike at the end of the 'Our Classes' page but did not respond on smaller screens even though a JS code was implemented. Also, a CSS code was tested, but neither one worked. Thus, Google Maps was removed from the page.
 
-(README_docs/Bugs/Googlemaps/maps.png)
+![](README_docs/Bugs/Googlemaps/maps.png)
 
+**_Class name do not appear on Manage Bookings Page_**
+
+The class name does not appear on the Manage Bookings page even though it is called on the manage_booking.html file the same way it is on the edit_booking.html and delete_booking.html files. A scan on the Bookings views.py and the manage_booking.html files occurred with no luck in debugging this issue.
+
+![](README_docs/Bugs/Classname/classbug.png)
 
 
 ---
