@@ -391,6 +391,7 @@ The 'Our Classes' page was not responsive on smaller devices with regards to the
 
 Thus a group-card class was chosen instead, so the cards are aligned and mobile-friendly.
 
+
 ### Unfixed Bugs
 **_Google Maps not responsive_**
 
