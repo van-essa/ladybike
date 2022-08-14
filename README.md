@@ -290,6 +290,58 @@ To generate your own coverage report from the command line:
 
 ### Bugs and Fixes
 
+#### Fixed Bugs
+**Database Issue**
+A problem occurred when a change was created in the Booking Models.
+
+(README_docs/Bugs/DatabaseIssue/bugdatabase.png)
+
+The first step was to run the following:
+- `python3 manage.py makemigrations --dry-run`
+- `python3 manage.py makemigrations`
+- `python3 manage.py migrate --plan`
+- `python3 manage.py migrate`
+
+But that did not solve the issue:
+
+(README_docs/Bugs/DatabaseIssue/migration.png)
+
+Then I tried to add 1 instead of True on the seats default session, but it did not help solve the issue. Thus a clean state needed to be craeted to rerun the commands. The steps followed were:
+1. Remove all migrations files within the project. Go through Articles and Booking migration folders and remove everything inside, except the __init__.py file, whis it is essential **not** to remove this.
+2. Go to the Heroku app dashboard and find Resources, then click Heroku PostGres:
+
+(README_docs/Bugs/DatabaseIssue/herokupostgress.png)
+
+3. Then in data.heroku, go to Settings
+
+(README_docs/Bugs/DatabaseIssue/herokudata.png)
+
+4. Click on Reset Database, type the app name, namely Ladybike in the prompted box and press Reset Database
+
+(README_docs/Bugs/DatabaseIssue/resetdatabase.png)
+
+5. After resetting, if there is a new DATABASE_URL, it should be in the Heroku config vars, copy paste that and paste it into the env.py file.
+6. When that is done, run migrations to create the tables on the database
+- `python3 manage.py makemigrations --dry-run`
+- `python3 manage.py makemigrations`
+- `python3 manage.py migrate --plan`
+- `python3 manage.py migrate`
+- `python3 manage.py createsuperuser`
+7. Then:
+- `heroku login -i`
+- `heroku run python3 manage.py migrate`
+- `heroku run python3 manage.py createsuperuser`
+
+Which worked to solve the issue.
+
+**Credentials on Heroku Database**
+When running pytho3 manage.py runserver, this error popped up.
+
+(README_docs/Bugs/Credentials/credentials.png)
+
+The error occurred because the credentials for Ladybike's Heroku database have been rotated. This happens when Heroku performs database maintenance on their servers. The DATABASE_URL var in the Heroku app config vars will update automatically with the new Postgres URI, but you'll need to update your env.py file locally. Thus, the env.py file was updated with the new Postgress URI, and the error disappeared.
+
+**No action when Restistering **
 
 ---
 ## Deployment
