@@ -2,7 +2,9 @@
 
 ![](README_docs/Responsive/Responsive.png)
 
-[Live application can be found here](https://ladybike.herokuapp.com/home)
+## Click **[here](hhttps://ladybike.herokuapp.com/home)** to live site.  
+
+---
 
 This full-stack framework project was built using Django, PostgreSQL, Python, HTML, CSS and JavaScript. This is a cycling booking website designed to display cycling classes to customers and allow them to make/edit/delete bookings. The website also provides a list of articles users can choose to read from and can like if logged in. This project has been built for educational purposes.
 
@@ -401,6 +403,10 @@ Google Maps was featured under the contact information of Ladybike at the end of
 The class name does not appear on the Manage Bookings page even though it is called on the manage_booking.html file the same way it is on the edit_booking.html and delete_booking.html files. A scan on the Bookings views.py and the manage_booking.html files occurred with no luck in debugging this issue.
 
 ![](README_docs/Bugs/Classname/classbug.png)
+
+**_No response when booking status is No_**
+
+When testing adding the booking status to no, the user could still edit or delete the booking. This feature would make the booking system much more efficient, but no troubleshooting was helpful enough to manage and fix the bug. Scanning the views.py as well as the manage_booking.html file, everything looked clear. 
 
 
 ---
