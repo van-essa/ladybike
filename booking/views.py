@@ -303,6 +303,7 @@ class EditBooking(View):
             return HttpResponseRedirect(url)
 
     def post(self, request, booking_id):
+        """Get booking from database"""
         customer = get_customer_instance(request, User)
         if request.user.is_authenticated:
             # get booking from database

@@ -1,3 +1,4 @@
+"""imports"""
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
@@ -21,7 +22,8 @@ class ClassName(models.Model):
                      ('Ride_that_hill', 'Ride_that_hill'),
                      ('LadyBike', 'LadyBike'))
 
-    classes = models.CharField(max_length=15, choices=CLASS_CHOICES, primary_key=True)
+    classes = models.CharField(
+        max_length=15, choices=CLASS_CHOICES, primary_key=True)
 
     def __str__(self):
         return str(self.classes)

@@ -1,5 +1,5 @@
 """Imports"""
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from booking.models import Customer
 
 
