@@ -219,9 +219,11 @@ Bookings with a date in the past would not be displayed, so the user would not b
 
 **Delete Booking**: This page displays the booking selected with all of its information, the user presses 'Cancel Booking', and a modal pop is up for the user to confirm the cancellation, explaining that this cannot be undone. If the user chooses 'Cancel', the booking will be deleted from the model. After confirming, the user is redirected to the 'Manage Bookings' page, and a success message shows which reservation was edited.
 
-![](README_docs/Features/cancel_booking.png)
+![](README_docs/Features/cancel.png)
 
 ![](README_docs/Features/cancel_2.png)
+
+![](README_docs/Features/canceled.png)
 
 ---
 ## Technologies Used
