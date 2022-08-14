@@ -21,11 +21,12 @@ This website will offer all of these things listed in the Persona template whils
 
 Due to the age group of female users, it is assumed that most users will be viewing the site on their mobile phones; therefore, creating something responsive is integral to the design. Thus, Bootstrap grids and elements & custom CSS have been used to allow this.
 
+---
 ## Purpose
 
 The app is designed as a booking application that encourages the users to make a booking.
 
-
+---
 ## User Stories
 
 ### User Stories that have been satisfied by creation of particular apps in ths project:
@@ -61,6 +62,8 @@ The app is designed as a booking application that encourages the users to make a
 |  [#8](https://github.com/van-essa/ladybike/issues/8) | As a user, I can add the class to my calendar so that I can can have it in my schedule. |
 |  [#10](https://github.com/van-essa/ladybike/issues/10) | As a user, I can choose the order of the published date so that I can read the latest or oldest article. |
 
+---
+
 ## Agile Methodology
 
 ### Canban board and issues
@@ -68,6 +71,8 @@ The app is designed as a booking application that encourages the users to make a
 ![Screenshot of the canban board](README_docs/Kanbar_board/kanban.png)
 
 Github issues were used to create the User stories and group them according to MoSCoW prioritization technique. Link to the project with live issues can be found [HERE](https://github.com/van-essa/ladybike/projects/1). The issues are currently in two categories - done or for the next release.
+
+---
 
 ## Scope
 In order to achieve the desired user & business goals, the following features will be included in this release:
@@ -80,6 +85,8 @@ In order to achieve the desired user & business goals, the following features wi
 - Booking page, with a booking form to enquire with the cycling gym
 - Manage booking page, where logged-in users can edit/delete existing bookings they have
 - Register/login feature using Django allauth
+
+---
 
 ## Structure
 This website has been designed with simplicity in mind, and each page only has vital information so the user can find what they want quickly without having to read through unnecessary things. Each key feature has been separated to highlight its functionality to the user.
@@ -417,6 +424,7 @@ Throughout the process of building this website, various online sources have bee
 * My favourite webpage as inspiration [SWEAT](https://www.sweat.com/)
 * Card template from [bootstrap examples](https://getbootstrap.com/docs/4.4/components/card/)
 * Testing YouTube tutorial for my automated testing [Testing](https://www.youtube.com/playlist?list=PLbpAWbHbi5rMF2j5n6imm0enrSD9eQUaM)
+* Code Validation with Joanna Gorska [Code Validation](https://www.youtube.com/watch?v=6j9dZTW4owI&ab_channel=CodeInstitute)
 
 ### People
 
