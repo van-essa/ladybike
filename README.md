@@ -288,10 +288,12 @@ To generate your own coverage report from the command line:
 3. Then `coverage html` to generate the report
 4. You can view the report in a browser by using the command `python3 -m http.server` and opening the `index.html` file from inside the `htmlcov` folder.
 
-### Bugs and Fixes
+---
+## Bugs and Fixes
 
-#### Fixed Bugs
-**Database Issue**
+### Fixed Bugs
+**_Database Issue_**
+
 A problem occurred when a change was created in the Booking Models.
 
 (README_docs/Bugs/DatabaseIssue/bugdatabase.png)
@@ -334,14 +336,53 @@ Then I tried to add 1 instead of True on the seats default session, but it did n
 
 Which worked to solve the issue.
 
-**Credentials on Heroku Database**
+**_Credentials on Heroku Database_**
+
 When running pytho3 manage.py runserver, this error popped up.
 
 (README_docs/Bugs/Credentials/credentials.png)
 
 The error occurred because the credentials for Ladybike's Heroku database have been rotated. This happens when Heroku performs database maintenance on their servers. The DATABASE_URL var in the Heroku app config vars will update automatically with the new Postgres URI, but you'll need to update your env.py file locally. Thus, the env.py file was updated with the new Postgress URI, and the error disappeared.
 
-**No action when Restistering **
+**_No action when Registering_**
+
+When testing to register, no action occurred. Namely, the user did not log in. It was just redirecting the user to the login page. Then, looking closer at the terminal, the result was that the user was registered through the Social account, which was decided not to be implemented in the application. Yet, it was mentioned on the Registration HTML file (signup.html).
+
+(README_docs/Bugs/Signup/registration.png)
+
+Thus, the solution was the replacement from socialaccount_signup to account_signup; namely:
+`<form role="form" class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">`
+
+
+instead of
+
+
+`<form role="form" class="signup" id="signup_form" method="post" action="{% url 'socialaccount_signup' %}">`
+
+**_Nothing shown on Manage Bookings_**
+
+When Testing Manage Bookings, the user could not see anything even though they had made a booking. The problem with this issue occurred because the booking was printed instead of returned on the Booking Views file.
+
+(README_docs/Bugs/ManageBooking/printbooking.png)
+
+Namely it should be `return get_booking`
+
+**_Our Classes page not responsive_**
+
+The 'Our Classes' page was not responsive on smaller devices with regards to the initial card Bootstrap setting of each class:
+
+(README_docs/Bugs/Cards/bugwithcards.png)
+
+Thus a group-card class was chosen instead, so the cards are aligned and mobile-friendly.
+
+### Unfixed Bugs
+**_Google Maps not responsive_**
+
+Google Maps was featured under the contact information of Ladybike at the end of the 'Our Classes' page but did not respond on smaller screens even though a JS code was implemented. Also, a CSS code was tested, but neither one worked. Thus, Google Maps was removed from the page.
+
+(README_docs/Bugs/Googlemaps/maps.png)
+
+
 
 ---
 ## Deployment
