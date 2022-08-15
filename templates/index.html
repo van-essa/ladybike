@@ -22,13 +22,11 @@
             to make cycling training a fun experience for other females!</p>
           <h4 class="text-white mb-3">Book a session today, and we'll ensure you have a great sweaty experience!</h4>
           {% if request.user.is_authenticated %}
-          <div class="hover-zoom">
-            <a class=" button btn btn-lg font-weight-bold" style="background-color: #fff; color: #d606ba; font-weight: 800;" href="{% url 'booking' %}">
+            <a class="header-button btn btn-lg font-weight-bold" href="{% url 'booking' %}">
               Book Now!</a>
           {% else %}
-          <a class=" button btn btn-lg font-weight-bold" style="background-color: #fff; color: #d606ba; font-weight: 800;" href="/classes">
+          <a class="header-button btn btn-lg font-weight-bold" href="/classes">
             Our Classes!</a>
-          </div>
           {% endif %}
         </div>
       </div>
@@ -100,7 +98,7 @@
                     Our articles provide great content to inspire you to follow a healthy lifestyle.
                   </h5>
                   <div class="card-footer text-center" style="background-color: #fff;">
-                    <a class="btn btn-secondary btn-lg" style="background-color: #d606ba;" href="{% url 'articles' %}">
+                    <a class=" articles-button btn btn-secondary btn-lg" href="{% url 'articles' %}">
                       Articles</a></div>
                 </div>
               </div>
