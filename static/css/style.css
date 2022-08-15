@@ -103,10 +103,15 @@ body {
     color: #fff;
 }
 
-.btn-signup:hover,
+
 .btn-signup:active {
     background-color: #fff;
     color: #d606ba;
+}
+
+.btn-signup:hover {
+    background-color: #d606ba;
+    color: #fff;
 }
 
 .link {
@@ -499,32 +504,9 @@ body {
 
 
 
-/* Manage Reservations page */
+/* Manage Booking page */
 
 /* Status colours */
-.confirmed {
-    background-color: #d606ba;
-    color: white;
-    padding: 2px;
-}
-
-.pending {
-    background-color: rgb(100, 149, 250);
-    color: white;
-    padding: 2px;
-}
-
-.rejected {
-    background-color: rgb(167, 8, 3);
-    color: white;
-    padding: 2px;
-}
-
-.expired {
-    background-color: grey;
-    color: white;
-    padding: 2px;
-}
 
 .booking-list,
 .booking-item {
@@ -532,6 +514,25 @@ body {
     padding-left: 0;
 }
 
+.submit-button {
+    background-color: #d606ba;
+    color: #fff;
+}
+
+.submit-button:hover {
+    background-color: #fde3e9;
+    color: #d606ba;
+}
+
+.cancel-button {
+    background-color: lightgray;
+    color: #d606ba;
+}
+
+.cancel-button:hover {
+    background-color: #42424a;
+    color: #fde3e9;
+}
 
 /* Crispy form inputs */
 
