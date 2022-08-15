@@ -534,6 +534,31 @@ body {
     color: #fde3e9;
 }
 
+/* Edit Booking button */
+
+.edit-booking-button {
+    background-color: #d606ba;
+    color: white;
+}
+
+.edit-booking-button:hover {
+    background-color: #fde3e9;
+    color: #d606ba;
+}
+
+/* Delete Booking button */
+
+.delete-booking-button {
+    background-color: #d606ba;
+    color: white;
+}
+
+.delete-booking-button:hover {
+    background-color: #42424a;
+    color: #fde3e9;
+}
+
+
 /* Crispy form inputs */
 
 input#id_name.textinput.textInput,
