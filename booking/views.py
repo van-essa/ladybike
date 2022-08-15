@@ -253,13 +253,6 @@ class EditBooking(View):
                     "booking that is in the past.")
                 url = reverse('manage_booking')
                 return HttpResponseRedirect(url)
-            # Prevent customers editing rejected bookings
-            elif booking.status == 'No':
-                messages.add_message(
-                    request, messages.ERROR, "You are trying to edit a "
-                    "booking that has been rejected.")
-                url = reverse('manage_booking')
-                return HttpResponseRedirect(url)
             else:
                 # Convert date to display in dd/mm/YYYY format
                 date_to_string = booking.requested_date.strftime(
