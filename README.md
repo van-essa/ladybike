@@ -9,7 +9,49 @@
 This full-stack framework project was built using Django, PostgreSQL, Python, HTML, CSS and JavaScript. This is a cycling booking website designed to display cycling classes to customers and allow them to make/edit/delete bookings. The website also provides a list of articles users can choose to read from and can like if logged in. This project has been built for educational purposes.
 
 ---
+# Table of Contents
+<details>
+<summary>Table of Contents</summary>
 
+* [UX](#ux)
+    * [Strategy](#strategy)
+* [Purpose](#purpose)
+* [User Stories](#user-stories)
+    * [User Stories that have been satisfied by creation of particular apps in this project](#user-storie-that-have-been-satisfied-by-creation-of-particular-apps-in-this-project)
+    * [User stories that are planned for next sprint](#user-stories-that-are-planned-for-next-sprint)
+* [Agile Methodology](#agile-methodology) 
+    * [Canban board and issues](#canban-board-and-issues)
+* [Scope](#scope)
+* [Structure](#structure)
+    * [Databases](#databases)
+    * [Skeleton](#skeleton) 
+    * [Surface](#surface)
+* [Features](#features)
+    * [Home page](#home-page)
+    * [Articles](#articles) 
+    * [Classes](#classes) 
+    * [Booking](#booking) 
+* [Technologies Used](#technologies-used)  
+* [Testing](#testing)
+    * [Code Validation](#code-validation)
+    * [Manual Testing](#manual-testing) 
+    * [Automated Testing](#automated-testing)  
+* [Bugs and Fixes](#bugs-and-fixes)
+    * [Fixed Bugs](#fixed-bugs)
+    * [Unfixed Bugs](#unfixed-bugs) 
+* [Deployment](#deployment)
+    * [Using Github & Gitpod](#using-github-&-gitpod)
+    * [Forking the GitHub Repository](#forking-the-gitHub-repository) 
+    * [Making a Local Clone](#making-a-local-clone) 
+    * [Deployment to heroku](#deployment-to-heroku) 
+* [Credits](#credits)
+    * [Online resources](#online-resources)
+    * [Tutorials and inspiration](#tutorials-and-inspiration) 
+    * [People](#people)  
+</details>
+<hr>
+
+---
 ## UX
 
 LadyBike is a cycling booking platform only for women. It provides three biking classes, and articles focused on a healthy lifestyle and cycling tips. It is designed in light and dark-coloured style, using fuchsia and dark light grey colours. The user is given plenty of choices on how to get to the booking form from the home page - via the navbar and a call to action button.
@@ -31,7 +73,7 @@ The app is designed as a booking application that encourages the users to make a
 ---
 ## User Stories
 
-### User Stories that have been satisfied by creation of particular apps in ths project:
+### User Stories that have been satisfied by creation of particular apps in this project:
 
 | id  |  Content | How was it satisfied
 | ------ | ------ | ------ |
@@ -268,7 +310,7 @@ Several technologies have been used to enable this design to work:
 A combination of manual and automated testing has been used to ensure that the website's functionality meets the desired intent.
 
 ### Code Validation
-All code has been validated using an online validator specific to the language; all code now passes with zero errors, except one in the index.html page where `the element button must not appear as a descendant of the element.` The error was not fixed and will be mentioned in the bugs below since removing the class from the button element caused a different appearance. 
+All code has been validated using an online validator specific to the language; all code now passes with zero errors.
 
 - [W3C Markup Validation Service](https://validator.w3.org/) 
     - Used to validate all HTML code written and used in this webpage.
