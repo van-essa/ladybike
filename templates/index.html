@@ -12,7 +12,7 @@
 {% load static %} 
 
 <header class="bg-dark">
-  <div class="page-header min-vh-75 bg-gradient-dark opacity-6" style="height: 500px; background-image: 
+  <div class="page-header min-vh-75 bg-gradient-dark" style="height: 500px; background-image: 
   url('https://stagescycling.com/media/.renditions/wysiwyg/stages-cycling/landing-pages/home/2021/commercial_indoor_cycles-smiling-700px_by_500px.jpg')">
     <div class="container">
       <div class="row justify-content-center">
@@ -23,10 +23,10 @@
           <h4 class="text-white mb-3">Book a session today, and we'll ensure you have a great sweaty experience!</h4>
           {% if request.user.is_authenticated %}
           <div class="hover-zoom">
-            <a class="btn btn-lg font-weight-bold" style="background-color: #fff; color: #d606ba; font-weight: 800;" href="{% url 'booking' %}">
+            <a class=" button btn btn-lg font-weight-bold" style="background-color: #fff; color: #d606ba; font-weight: 800;" href="{% url 'booking' %}">
               Book Now!</a>
           {% else %}
-          <a class="btn btn-lg font-weight-bold" style="background-color: #fff; color: #d606ba; font-weight: 800;" href="/classes">
+          <a class=" button btn btn-lg font-weight-bold" style="background-color: #fff; color: #d606ba; font-weight: 800;" href="/classes">
             Our Classes!</a>
           </div>
           {% endif %}
