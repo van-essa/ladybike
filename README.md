@@ -198,7 +198,7 @@ In order to make a booking, the user must either register or log in.
 
 ![](README_docs/Features/bookingsystem.png)
 
-Also, noteworthy to mention that the user can logout whnenever they want.
+Also, noteworthy to mention that the user can logout whenever they want.
 
 ![](README_docs/Features/signout.png)
 
