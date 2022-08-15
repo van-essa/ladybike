@@ -29,15 +29,18 @@
             <input class="form-control" id="username" name="username" placeholder="Username" required="" type="text" value=""> 
           </div> <div class="input-group input-group-outline mb-3"> 
             <input class="form-control" id="email" name="email" placeholder="Email" required="" type="email" value=""> 
-          </div> <div class="input-group input-group-outline mb-3"> <input class="form-control" id="password" name="password" placeholder="Password" required="" type="password" value=""> 
+          </div> <div class="input-group input-group-outline mb-3"> 
+            <input class="form-control" id="password" name="password" placeholder="Password" required="" type="password" value=""> 
           </div> <div class="form-check form-check-info text-start ps-0"> 
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked="">
             {% endif %}
           </div> 
           <div class="text-center"> 
-            <button type="submit" name="register" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0" style="background-color: #d606ba;">{% trans 'Sign Up' %} &raquo;</button> 
+            <button type="submit" name="register" class="btn btn-signup bg-gradient-primary btn-lg w-100 mt-4 mb-0">
+              {% trans 'Sign Up' %} &raquo;</button> 
           </div> 
-          <p class="mt-4 text-sm text-center"> Already have an account? <a href="{{ login_url }}" class="text-primary text-gradient font-weight-bold">Sign IN</a> </p> 
+          <p class="mt-4 text-sm text-center"> Already have an account? 
+            <a href="{{ login_url }}" class="text-primary text-gradient font-weight-bold">Sign IN</a> </p> 
         </form> 
       </div> 
     </div> 
