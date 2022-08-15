@@ -167,7 +167,8 @@ body {
     background-image: linear-gradient(195deg, #42424a 0%, #191919 100%);
 }
 
-.header-button {
+.header-button, 
+.booking-button {
     display: inline-block;
     background-color: #d606ba;
     color: #fff;
@@ -180,7 +181,8 @@ body {
     transition: all ease-in-out 300ms;
   }
 
-  .header-button:hover {
+  .header-button:hover, 
+  .booking-button:hover {
     box-shadow: 0px 37px 20px -20px #fff;
     -webkit-transform: translate(0px, -10px) scale(1.2);
             transform: translate(0px, -10px) scale(1.2);
