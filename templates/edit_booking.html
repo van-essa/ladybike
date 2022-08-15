@@ -3,18 +3,18 @@
 {% block content %}
 
 {% load crispy_forms_tags %}
+{% load static %} 
+<div class="page-header align-items-start min-vh-100" style="background-image: url({% static 'images/bike_pink.jpg' %});" loading="lazy">
 <div class="container-fluid">
     <div class="row d-flex justify-content-center">
         <div class="col-sm-8">
             <h2 class="text-center mt-2 mb-3">Edit your booking with <span class="brand">Lady<span class="fuxia-lady"><span
                 class="fuxia-thin">|Bike</span></span></span></h2>
-            <p class="mt-2 mb-4">If you make any changes, your booking status will change to 'pending' as we need
-                to ensure that the class is available.</p>
         </div>
     </div>
 
     <div class="row d-flex justify-content-center">
-        <div class="col-sm-4">
+        <div class="col-md-6 col-lg-4">
             <!-- Display Booking ID -->
             <h5 class="text-center my-3">Booking ID: {{ booking.booking_id }}</h5>
             <!-- Booking form -->
@@ -28,6 +28,7 @@
             </form>
         </div>
     </div>
+</div>
 </div>
 
 {% endblock %}
