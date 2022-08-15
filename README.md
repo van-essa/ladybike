@@ -196,7 +196,7 @@ In order to make a booking, the user must either register or log in.
 
 ![](README_docs/Features/signup.png)
 
-![](README_docs/Features/booking.png)
+![](README_docs/Features/bookingsystem.png)
 
 Also, noteworthy to mention that the user can logout whnenever they want.
 
@@ -226,6 +226,10 @@ Bookings with a date in the past would not be displayed, so the user would not b
 ![](README_docs/Features/cancel_2.png)
 
 ![](README_docs/Features/canceled.png)
+
+
+**No Booking**: If the user has no bookings, when clicking on the Manage Bookings, a pop-up message shows that they have no session booked but can book here while directed to the Booking page.
+![](README_docs/Features/nosessionbooked.png)
 
 ---
 ## Technologies Used
