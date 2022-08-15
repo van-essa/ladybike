@@ -177,11 +177,11 @@ The navigation bar is fully responsive and collapses on mobile screens to a hamb
 
 If user is not logged in
 
-![](README_docs/Features/classes.png)
+![](README_docs/Features/classes_notloggedin.png)
 
 If user is logged in
 
-![](README_docs/Features/classesloggedin.png)
+![](README_docs/Features/classes_section.png)
 
 The user can also look at Ladybike's address and contact info for customer support.
 
@@ -407,7 +407,11 @@ The class name does not appear on the Manage Bookings page even though it is cal
 
 **_No response when booking status is No_**
 
-When testing adding the booking status to no, the user could still edit or delete the booking. This feature would make the booking system much more efficient, but no troubleshooting was helpful enough to manage and fix the bug. Scanning the views.py as well as the manage_booking.html file, everything looked clear. 
+When testing adding the booking status to no, the user could still edit or delete the booking. This feature would make the booking system much more efficient, but no troubleshooting was helpful enough to manage and fix the bug. Scanning the views.py as well as the manage_booking.html file, everything looked clear. Thus the code was removed from the views.py file in the Booking app.
+
+![](README_docs/Bugs/Rejected/rejected.png)
+
+![](README_docs/Bugs/Rejected/reject.png)
 
 
 ---
@@ -525,7 +529,6 @@ The live link can be found [here](live/page/here/???)
 Throughout the process of building this website, various online sources have been used to help fix bugs & tackle problems, in addition to multiple modules to create the functionality of this website:
 
 ### Online resources
-* [Icons8](https://icons8.com/)
 * [Unsplash](https://unsplash.com/)
 * [Fontawsome](https://fontawesome.com/)
 * [Bootstrap 5]()

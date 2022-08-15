@@ -35,11 +35,6 @@
                         <li class="booking-item">Date: <span class="booking-date"
                                 id="{{ booking.requested_date }}">{{ booking.requested_date|date:"d/m/Y"}}</span>
                         </li>
-                        <!-- If booking has been rejected -->
-                        {% if booking.status == 'No' %}
-                        <p class="mt-3 mb-4"> This booking was <strong>rejected</strong></p>
-                            <p>The class is either fully booked, outdated or has been canceled. We are sorry for the inconvenience.</p>
-                            {% else %}
                             <div class="text-center">
                                 <a href="{% url 'edit_booking' booking.booking_id %}"
                                     class="button submit-button inline-btn" style="background-color: #d606ba;
@@ -48,7 +43,6 @@
                                     class="button cancel-button inline-btn" style="background-color: lightgray;
                                     color: #d606ba;">Cancel Booking</a>
                             </div>
-                            {% endif %}
                             <hr>
                             </li>
                     </ul>

@@ -210,11 +210,8 @@ class ManageBooking(View):
             current_booking = fetch_booking(request, User)
             print("current_booking", current_booking)
 
-            customer_booking = Booking.objects.filter(
-                booking_id=current_booking).values().order_by('requested_date')
-
             # If the user has no bookings
-            if customer_booking is None:
+            if current_booking is None:
                 messages.add_message(
                     request, messages.WARNING,
                     "You have no session booked. No worries! "
