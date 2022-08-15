@@ -543,6 +543,7 @@ Throughout the process of building this website, various online sources have bee
 * [Markdown best practices](https://www.markdownguide.org/basic-syntax/)
 * [Appseed Templates](https://appseed.us/generator/material-kit/)
 * [Debounce](https://davidwalsh.name/javascript-debounce-function)
+* [CSSHint](https://csshint.com/bootstrap-buttons/)
 
 ### Tutorials and inspiration
 
