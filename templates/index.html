@@ -12,17 +12,23 @@
 {% load static %} 
 
 <header class="bg-dark">
-  <div class="page-header min-vh-75 bg-gradient-dark opacity-6" style="height: 500px; background-image: url('https://stagescycling.com/media/.renditions/wysiwyg/stages-cycling/landing-pages/home/2021/commercial_indoor_cycles-smiling-700px_by_500px.jpg')">
+  <div class="page-header min-vh-75 bg-gradient-dark opacity-6" style="height: 500px; background-image: 
+  url('https://stagescycling.com/media/.renditions/wysiwyg/stages-cycling/landing-pages/home/2021/commercial_indoor_cycles-smiling-700px_by_500px.jpg')">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center mx-auto my-auto">
           <h1 class="text-white">Welcome to <span><strong style="color: #d606ba;">Ladybike</strong></span></h1>
-          <p class="lead mb-4 text-white opacity-8 display-6">We’re passionate female cycling professionals who want to make cycling training a fun experience for other females!</p>
+          <p class="lead mb-4 text-white opacity-8 display-6">We’re passionate female cycling professionals who want 
+            to make cycling training a fun experience for other females!</p>
           <h4 class="text-white mb-3">Book a session today, and we'll ensure you have a great sweaty experience!</h4>
           {% if request.user.is_authenticated %}
-          <a href="{% url 'booking' %}" style="color: #d606ba;"><button type="submit" class="btn-lg bg-white font-weight-bold" style="color: #d606ba; font-weight: 800;">Book Now!</button></a>
+          <div class="hover-zoom">
+            <a class="btn btn-lg font-weight-bold" style="background-color: #fff; color: #d606ba; font-weight: 800;" href="{% url 'booking' %}">
+              Book Now!</a>
           {% else %}
-          <a href="/classes" style="color: #d606ba;"><button type="submit" class="btn-lg bg-white font-weight-bold" style="color: #d606ba; font-weight: 800;">Our Classes!</button></a>
+          <a class="btn btn-lg font-weight-bold" style="background-color: #fff; color: #d606ba; font-weight: 800;" href="/classes">
+            Our Classes!</a>
+          </div>
           {% endif %}
         </div>
       </div>
@@ -71,7 +77,8 @@
                       <div class="icon mb-3"><img src="{% static 'images/Cyclist.png' %}"  alt="Cyclist">
                       </div>
                       <h2>Only For <span><strong style="color: #d606ba;">Women</strong></span></h2>
-                      <h4>LadyBike offers three cycling indoor workouts ONLY for women! LadyBike is a place for women who are focused on their health and fitness and 
+                      <h4>LadyBike offers three cycling indoor workouts ONLY for women! LadyBike is a 
+                        place for women who are focused on their health and fitness and 
                         want to become better cyclists.</h4>
                   </div>
               </div>
@@ -92,8 +99,9 @@
                   <h5 class="mb-0">
                     Our articles provide great content to inspire you to follow a healthy lifestyle.
                   </h5>
-                  <a class="btn bg-gradient-info btn-sm mb-0 mt-3" style="background-color: #d606ba;" href="{% url 'articles' %}">
-                    <button type="button" class="font-weight-bold" style="font-weight: 800;">Find out more</button></a>
+                  <div class="card-footer text-center" style="background-color: #fff;">
+                    <a class="btn btn-secondary btn-lg" style="background-color: #d606ba;" href="{% url 'articles' %}">
+                      Articles</a></div>
                 </div>
               </div>
             </div>
