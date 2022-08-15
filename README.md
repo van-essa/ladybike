@@ -2,7 +2,7 @@
 
 ![](README_docs/Responsive/Responsive.png)
 
-## Click **[here](hhttps://ladybike.herokuapp.com/home)** to live site.  
+Click **[here](hhttps://ladybike.herokuapp.com/home)** to live site.  
 
 ---
 
