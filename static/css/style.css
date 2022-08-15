@@ -558,6 +558,17 @@ body {
     color: #fde3e9;
 }
 
+/* Booking button */
+
+.booking-class-button {
+    background-color: #d606ba;
+    color: white;
+}
+
+.booking-class-button:hover {
+    background-color: #fde3e9;
+    color: #d606ba;
+}
 
 /* Crispy form inputs */
 
